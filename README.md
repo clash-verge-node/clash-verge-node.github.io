@@ -1,4 +1,4 @@
-# 「11月15日」最高速度19.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接  更新时间 2024-11-15 11:10:39
+# 「11月16日」最高速度18.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接  更新时间 2024-11-16 10:25:45
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://clash-verge-node.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://clash-verge-node.github.io/uploads/2024/11/0-20241115.yaml
-- https://clash-verge-node.github.io/uploads/2024/11/1-20241115.yaml
-- https://clash-verge-node.github.io/uploads/2024/11/2-20241115.yaml
-- https://clash-verge-node.github.io/uploads/2024/11/3-20241115.yaml
-- https://clash-verge-node.github.io/uploads/2024/11/4-20241115.yml
+- https://clash-verge-node.github.io/uploads/2024/11/0-20241116.yaml
+- https://clash-verge-node.github.io/uploads/2024/11/1-20241116.yaml
+- https://clash-verge-node.github.io/uploads/2024/11/2-20241116.yaml
+- https://clash-verge-node.github.io/uploads/2024/11/3-20241116.yaml
+- https://clash-verge-node.github.io/uploads/2024/11/4-20241116.yml
 
 ### V2ray订阅链接
 
-- https://clash-verge-node.github.io/uploads/2024/11/0-20241115.txt
-- https://clash-verge-node.github.io/uploads/2024/11/1-20241115.txt
-- https://clash-verge-node.github.io/uploads/2024/11/2-20241115.txt
-- https://clash-verge-node.github.io/uploads/2024/11/3-20241115.txt
-- https://clash-verge-node.github.io/uploads/2024/11/4-20241115.txt
+- https://clash-verge-node.github.io/uploads/2024/11/0-20241116.txt
+- https://clash-verge-node.github.io/uploads/2024/11/1-20241116.txt
+- https://clash-verge-node.github.io/uploads/2024/11/2-20241116.txt
+- https://clash-verge-node.github.io/uploads/2024/11/3-20241116.txt
+- https://clash-verge-node.github.io/uploads/2024/11/4-20241116.txt
 
 ## 更多clash节点订阅 ：
 
