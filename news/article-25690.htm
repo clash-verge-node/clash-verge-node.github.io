@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-25690.htm" />
+    <meta charset="utf-8">
+    <title>async-validator 源码学习笔记validate 方法</title>
+        <meta name="description" content="一、validate 介绍 validate 是 async-validator 的核心方法，不仅需要掌握它的使用，也需要了解它的原理。 使用  validator.validate( source," />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">async-validator 源码学习笔记validate 方法</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<p data-track="1"><span style="font-size: 1.5em;">一、validate 介绍</span></p> <p data-track="4">validate 是 async-validator 的核心方法，不仅需要掌握它的使用，也需要了解它的原理。</p> <p class="pgc-h-arrow-right" data-track="9">使用</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">validator.validate( source, [options], callback ) .then(()</span>=&gt;<span style="color: rgba(0, 0, 0, 1)">{}) .</span><span style="color: rgba(0, 0, 255, 1)">catch</span>( ({errors, fields}) =&gt; {})</pre> </div> <p>参数</p> <ul> <li data-track="14">source 是需要验证的对象</li> <li data-track="15">options 是描述验证的处理选项的对象</li> <li data-track="16">callback 校验完成的回调函数</li> </ul> <p data-track="12">返回值是一个 promise 对象</p> <ul> <li data-track="17">then 是校验通过执行。</li> <li data-track="18">catch 校验失败执行。</li> <li data-track="19">errors 是 error 的数组，fields 是一个对象，包含监听对象和 error 的数组。</li> </ul> <p data-track="5">validate 方法校验的流程为：</p> <div class="pgc-img"><img decoding="async" src="https://p26.toutiaoimg.com/origin/tos-cn-i-qvj2lq49k0/c86f5b74fc02419aafa47349409359c8?from=pc" alt="async-validator 源码学习笔记（六）：validate 方法" class="syl-page-img"/></p> <p class="pgc-img-caption"> </div> <p data-track="25">源码是如何定义 validate 方法的呢？</p> <h2 class="pgc-h-arrow-right" data-track="21">二、validate 源码解读</h2> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 0, 1)">/*</span><span style="color: rgba(0, 128, 0, 1)"> 参数：  source_ 即 source ：校验的对象。  o 即 options ：描述验证处理选项。  oc 即 callback：验证完成的回调函数。</span><span style="color: rgba(0, 128, 0, 1)">*/</span><span style="color: rgba(0, 0, 0, 1)"> _proto.validate</span>=<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> validate(source_, o, oc) { ...</span><span style="color: rgba(0, 0, 255, 1)">var</span> source =<span style="color: rgba(0, 0, 0, 1)"> source_;</span><span style="color: rgba(0, 0, 255, 1)">var</span> options =<span style="color: rgba(0, 0, 0, 1)"> o;</span><span style="color: rgba(0, 0, 255, 1)">var</span> callback =<span style="color: rgba(0, 0, 0, 1)"> oc;  ...</span><span style="color: rgba(0, 0, 255, 1)">return</span> asyncMap(series, options,<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (data, doIt) {   ....  },</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (results) {   complete(results);  }, source); };</span></pre> </div> <p data-track="23">validate 方法前半部分主要是在构造一个完整的 series 对象，返回的是 asyncMap 方法。我们来看看 validate 方法内部的几个方法，分别作用是什么。</p> <p data-track="31">参数处理</p> <div class="cnblogs_code"> <pre>_proto.validate =<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> validate(source_, o, oc) { ...</span><span style="color: rgba(0, 0, 255, 1)">var</span> source =<span style="color: rgba(0, 0, 0, 1)"> source_;</span><span style="color: rgba(0, 0, 255, 1)">var</span> options =<span style="color: rgba(0, 0, 0, 1)"> o;</span><span style="color: rgba(0, 0, 255, 1)">var</span> callback =<span style="color: rgba(0, 0, 0, 1)"> oc;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> options 是可选参数</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 如果 options 是函数时，说明第二个是回调函数，options 是空对象</span><span style="color: rgba(0, 0, 255, 1)">if</span> (<span style="color: rgba(0, 0, 255, 1)">typeof</span> options === 'function'<span style="color: rgba(0, 0, 0, 1)">) {   callback</span>=<span style="color: rgba(0, 0, 0, 1)"> options;   options</span>=<span style="color: rgba(0, 0, 0, 1)"> {};  }  ... };</span></pre> </div> <p data-track="20">检查校验规则</p> <p data-track="36">检查校验规则是否为空，为空的时候立即执行回调。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">if</span> (!<span style="color: rgba(0, 0, 255, 1)">this</span>.rules || Object.keys(<span style="color: rgba(0, 0, 255, 1)">this</span>.rules).length === 0<span style="color: rgba(0, 0, 0, 1)">) {</span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)"> (callback) {   callback(</span><span style="color: rgba(0, 0, 255, 1)">null</span><span style="color: rgba(0, 0, 0, 1)">, source);  }</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> Promise.resolve(source); }</span></pre> </div> <h3 data-track="32">complete 函数</h3> <p data-track="40">complete 函数主要是为了整合 errors 数组和 fields 对象，然后用 callback 回调函数把它们返回。</p> <div class="cnblogs_code"> <pre>_proto.validate =<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> validate(source_, o, oc) {  ...</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> complete(results) {</span><span style="color: rgba(0, 0, 255, 1)">var</span> errors =<span style="color: rgba(0, 0, 0, 1)"> [];</span><span style="color: rgba(0, 0, 255, 1)">var</span> fields =<span style="color: rgba(0, 0, 0, 1)"> {};</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 定义 add 方法，给 errors 添加元素 error</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> add(e) {</span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)"> (Array.isArray(e)) {</span><span style="color: rgba(0, 0, 255, 1)">var</span><span style="color: rgba(0, 0, 0, 1)"> _errors;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 给 errors 添加 error</span>     errors = (_errors =<span style="color: rgba(0, 0, 0, 1)"> errors).concat.apply(_errors, e);    }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {     errors.push(e);    }   }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 迭代 resaults 把 resaults 中的每个 error 都加入 errors</span><span style="color: rgba(0, 0, 255, 1)">for</span> (<span style="color: rgba(0, 0, 255, 1)">var</span> i = 0; i &lt; results.length; i++<span style="color: rgba(0, 0, 0, 1)">) {   add(results[i]);   }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">如果最后结果 errors 为空，就返回 null</span><span style="color: rgba(0, 0, 255, 1)">if</span> (!<span style="color: rgba(0, 0, 0, 1)">errors.length) {    callback(</span><span style="color: rgba(0, 0, 255, 1)">null</span><span style="color: rgba(0, 0, 0, 1)">, source);   }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">把 errors 中相同 field 的 error 合并，转换为对象的形式</span>    fields =<span style="color: rgba(0, 0, 0, 1)"> convertFieldsError(errors);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> errors fields 回调传出参数</span><span style="color: rgba(0, 0, 0, 1)">   callback(errors, fields);   }  }</span><span style="color: rgba(0, 0, 255, 1)">return</span> asyncMap(series, options,<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (data, doIt) {    ....   },</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (results) {   complete(results);  }, source); };</span></pre> </div> <h3 class="syl-line-pure-english" data-track="37">options.message</h3> <p data-track="44">messsage 主要是定义检验失败后的错误提示信息，官方提供了一个默认模板，我们也可以进行定制化，此处的 options.message 就是来处理到底使用哪个的?根据情况到底是使用默认还是合并。</p> <div class="cnblogs_code"> <pre>_proto.validate =<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> validate(source_, o, oc) {  ...</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">如果 options 中有 message 属性</span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)"> (options.messages) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 创建一个 message ，使用的是默认</span><span style="color: rgba(0, 0, 255, 1)">var</span> messages$1 =<span style="color: rgba(0, 0, 255, 1)">this</span><span style="color: rgba(0, 0, 0, 1)">.messages();</span><span style="color: rgba(0, 0, 255, 1)">if</span> (messages$1 ===<span style="color: rgba(0, 0, 0, 1)"> messages) {    messages$</span>1 =<span style="color: rgba(0, 0, 0, 1)"> newMessages();   }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 将options 的 message 与默认的 message 合并</span>    deepMerge(messages$1<span style="color: rgba(0, 0, 0, 1)">, options.messages);    options.messages</span>= messages$1<span style="color: rgba(0, 0, 0, 1)">;   }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> options 没有 message 属性</span>    options.messages =<span style="color: rgba(0, 0, 255, 1)">this</span><span style="color: rgba(0, 0, 0, 1)">.messages();   }</span><span style="color: rgba(0, 0, 255, 1)">return</span> asyncMap(series, options,<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (data, doIt) {    ....   },</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (results) {     complete(results);   }, source); };</span></pre> </div> <h3 data-track="42">series 对象</h3> <p data-track="47">生成的 serise 对象，目的是为了统一最终的数据格式。</p> <div class="cnblogs_code"> <pre>_proto.validate =<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> validate(source_, o, oc) {  ...</span><span style="color: rgba(0, 0, 255, 1)">var</span> series =<span style="color: rgba(0, 0, 0, 1)"> {};</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> keys 是 rule 的所有键</span><span style="color: rgba(0, 0, 255, 1)">var</span> keys = options.keys || Object.keys(<span style="color: rgba(0, 0, 255, 1)">this</span><span style="color: rgba(0, 0, 0, 1)">.rules);  keys.forEach(</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (z) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> arr 存放 rules[z] 的一个数组</span><span style="color: rgba(0, 0, 255, 1)">var</span> arr =<span style="color: rgba(0, 0, 0, 1)"> _this2.rules[z];</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> value 存放 source[z] 是一个值或对象</span><span style="color: rgba(0, 0, 255, 1)">var</span> value =<span style="color: rgba(0, 0, 0, 1)"> source[z];   arr.forEach(</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (r) {</span><span style="color: rgba(0, 0, 255, 1)">var</span> rule =<span style="color: rgba(0, 0, 0, 1)"> r;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 当有transform属性而且是个函数时，要提前把值转换</span><span style="color: rgba(0, 0, 255, 1)">if</span> (<span style="color: rgba(0, 0, 255, 1)">typeof</span> rule.transform === 'function'<span style="color: rgba(0, 0, 0, 1)">) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 浅拷贝下，打破引用</span><span style="color: rgba(0, 0, 255, 1)">if</span> (source ===<span style="color: rgba(0, 0, 0, 1)"> source_) {      source</span>=<span style="color: rgba(0, 0, 0, 1)"> _extends({}, source);     }     value</span>= source[z] =<span style="color: rgba(0, 0, 0, 1)"> rule.transform(value);    }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 浅拷贝打破引用</span><span style="color: rgba(0, 0, 255, 1)">if</span> (<span style="color: rgba(0, 0, 255, 1)">typeof</span> rule === 'function'<span style="color: rgba(0, 0, 0, 1)">) {     rule</span>=<span style="color: rgba(0, 0, 0, 1)"> {      validator: rule      };     }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {      rule</span>=<span style="color: rgba(0, 0, 0, 1)"> _extends({}, rule);     }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> Fill validator. Skip if nothing need to validate</span>     rule.validator =<span style="color: rgba(0, 0, 0, 1)"> _this2.getValidationMethod(rule);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 异常处理</span><span style="color: rgba(0, 0, 255, 1)">if</span> (!<span style="color: rgba(0, 0, 0, 1)">rule.validator) {</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)">;      }     rule.field</span>=<span style="color: rgba(0, 0, 0, 1)"> z;     rule.fullField</span>= rule.fullField ||<span style="color: rgba(0, 0, 0, 1)"> z;     rule.type</span>=<span style="color: rgba(0, 0, 0, 1)"> _this2.getType(rule);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 生成完整的 series</span>     series[z] = series[z] ||<span style="color: rgba(0, 0, 0, 1)"> [];     series[z].push({     rule: rule,     value: value,     source: source,     field: z    });   });  });</span><span style="color: rgba(0, 0, 255, 1)">return</span> asyncMap(series, options,<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (data, doIt) {    ....   },</span><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (results) {       complete(results);   }, source); };</span></pre> </div> <h3 class="syl-line-pure-english" data-track="46">asyncMap</h3> <p data-track="48">asyncMap 作为一个返回函数，不得不说它又是什么内容呢？</p> <p data-track="51">异步迭代用的 asyncMap 函数并没有多长，它主要实现两个功能，第一是决定是串行还是并行的执行单步校验，第二个功能是实现异步，把整个迭代校验过程封装到一个 promise 中，实现了整体上的异步。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> asyncMap(objArr, option, func, callback, source) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 如果option.first选项为真，说明第一个error产生时就要报错</span><span style="color: rgba(0, 0, 255, 1)">if</span><span style="color: rgba(0, 0, 0, 1)"> (option.first) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> pending 是一个promise</span><span style="color: rgba(0, 0, 255, 1)">var</span> _pending =<span style="color: rgba(0, 0, 255, 1)">new</span> Promise(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (resolve, reject) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 定义一个函数next，这个函数先调用callback，参数是errors</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 再根据errors的长度决定resolve还是reject</span><span style="color: rgba(0, 0, 255, 1)">var</span> next =<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> next(errors) {     callback(errors);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> reject的时候，返回一个AsyncValidationError的实例</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 实例化时第一个参数是errors数组，第二个参数是对象类型的errors</span><span style="color: rgba(0, 0, 255, 1)">return</span> errors.length ? reject(<span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> AsyncValidationError(errors, convertFieldsError(errors))) : resolve(source);    };</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 把对象扁平化为数组flattenArr</span><span style="color: rgba(0, 0, 255, 1)">var</span> flattenArr =<span style="color: rgba(0, 0, 0, 1)"> flattenObjArr(objArr);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 串行</span><span style="color: rgba(0, 0, 0, 1)">   asyncSerialArray(flattenArr, func, next);   });</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 捕获error</span>   _pending["catch"](<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (e) {</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> e;   });</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> _pending;   }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 如果option.first选项为假，说明所有的error都产生时才报错</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 当指定字段的第一个校验规则产生error时调用callback，不再继续处理相同字段的校验规则。</span><span style="color: rgba(0, 0, 255, 1)">var</span> firstFields = option.firstFields ===<span style="color: rgba(0, 0, 255, 1)">true</span> ? Object.keys(objArr) : option.firstFields ||<span style="color: rgba(0, 0, 0, 1)"> [];</span><span style="color: rgba(0, 0, 255, 1)">var</span> objArrKeys =<span style="color: rgba(0, 0, 0, 1)"> Object.keys(objArr);</span><span style="color: rgba(0, 0, 255, 1)">var</span> objArrLength =<span style="color: rgba(0, 0, 0, 1)"> objArrKeys.length;</span><span style="color: rgba(0, 0, 255, 1)">var</span> total = 0<span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 0, 255, 1)">var</span> results =<span style="color: rgba(0, 0, 0, 1)"> [];</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 这里定义的函数next和上面的类似，只不过多了total的判断</span><span style="color: rgba(0, 0, 255, 1)">var</span> pending =<span style="color: rgba(0, 0, 255, 1)">new</span> Promise(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (resolve, reject) {</span><span style="color: rgba(0, 0, 255, 1)">var</span> next =<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> next(errors) {       results.push.apply(results, errors);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 只有全部的校验完才能执行最后的callback和reject</span>       total++<span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 0, 255, 1)">if</span> (total ===<span style="color: rgba(0, 0, 0, 1)"> objArrLength) {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 这个callback和reject/resolve是这个库既能回调函数又能promise的核心</span><span style="color: rgba(0, 0, 0, 1)">        callback(results);</span><span style="color: rgba(0, 0, 255, 1)">return</span> results.length ? reject(<span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> AsyncValidationError(results, convertFieldsError(results))) : resolve(source);       }     };</span><span style="color: rgba(0, 0, 255, 1)">if</span> (!<span style="color: rgba(0, 0, 0, 1)">objArrKeys.length) {       callback(results);       resolve(source);     }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 当firstFields中指定了该key时，说明该字段的第一个校验失败产生时就停止并调用callback</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 所以是串行的asyncSerialArray</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 没有指定该key，说明该字段的校验error需要都产生，就并行asyncParallelArray</span>     objArrKeys.forEach(<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (key) {</span><span style="color: rgba(0, 0, 255, 1)">var</span> arr =<span style="color: rgba(0, 0, 0, 1)"> objArr[key];</span><span style="color: rgba(0, 0, 255, 1)">if</span> (firstFields.indexOf(key) !== -1<span style="color: rgba(0, 0, 0, 1)">) {         asyncSerialArray(arr, func, next);       }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {         asyncParallelArray(arr, func, next);       }     });   });</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 捕获error，添加错误处理</span>   pending["catch"](<span style="color: rgba(0, 0, 255, 1)">function</span><span style="color: rgba(0, 0, 0, 1)"> (e) {</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> e;   });</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 返回promise实例</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> pending; }</span></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25230.htm">免费领养宠物正规网站平台有哪些软件可以下载（领养宠物的软件平台）</a></p>
+                                        <p>下一个：<a href="/news/article-25691.htm">宠物领养协议有效吗现在 宠物领养协议有效吗现在怎么办</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23827.htm" title="小型宠物粮食加工设备厂家排名前十（小型宠物粮食加工设备厂家排名前十名）">小型宠物粮食加工设备厂家排名前十（小型宠物粮食加工设备厂家排名前十名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-clash-verge-rev-node.htm" title="「10月21日」最高速度19.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月21日」最高速度19.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22458.htm" title="windows 使用pyenv-win 管理多python 版本">windows 使用pyenv-win 管理多python 版本</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-27-free-node-subscribe.htm" title="「10月27日」最高速度22.9M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月27日」最高速度22.9M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-today-clash-verge-rev-node.htm" title="「12月9日」最高速度18.5M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月9日」最高速度18.5M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-25-latest-clash-verge-rev-node.htm" title="「10月25日」最高速度21.4M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月25日」最高速度21.4M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21080.htm" title="猫咪3针疫苗多少钱一针啊（猫咪三针疫苗都是什么多少钱）">猫咪3针疫苗多少钱一针啊（猫咪三针疫苗都是什么多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-22457.htm" title="PHP如何访问全局类">PHP如何访问全局类</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-node-subscribe-links.htm" title="「11月18日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月18日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="「11月20日」最高速度21.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月20日」最高速度21.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
