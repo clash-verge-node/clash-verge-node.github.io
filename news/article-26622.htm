@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-26622.htm" />
+    <meta charset="utf-8">
+    <title>Go 1.18泛型的局限性初探</title>
+        <meta name="description" content="前言 Go 1.18 版本之后正式引入泛型，它被称作类型参数（type parameters），本文初步介绍 Go 中泛型的使用。长期以来 go 都没有泛型的概念，只有接口 interface 偶尔类" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">Go 1.18泛型的局限性初探</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                          				  				  				<h2 id="前言">前言</h2> <p>Go 1.18 版本之后正式引入泛型，它被称作类型参数（type parameters），本文初步介绍 Go 中泛型的使用。长期以来 go 都没有泛型的概念，只有接口 interface 偶尔类似的充当泛型的作用，然而接口终究无法满足一些基本的泛型需求，比如这篇文章里，我们会尝试用 Go 的泛型循序渐进地实现一些常见的函数式特性，从而探索 Go 泛型的优势和不足。</p> <h2 id="go-118">Go 1.18</h2> <p>在 Go1.18 可以通过如下命令安装体验:</p> <pre><code class="language-sh">go install golang.org/dl/go1.18@latest go1.18 download</code></pre> <h2 id="例1-泛型版本的求和函数">例1: 泛型版本的求和函数</h2> <pre><code class="language-go">import ( 	"golang.org/x/exp/constraints" )  func Sum[T constraints.Integer](values ...T) T { 	var sum T 	for _, v := range values { 		sum += v 	} 	return sum }</code></pre> <blockquote> <p>constraints 原本是放在标准库的包，但是近期被移除了，改到了 x/exp 中，参见<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/golang/go/issues/50792"  target="_blank" rel="nofollow">#50792</a></p> </blockquote> <p>这个版本实现了对任意多个同类型的整数求和。Sum 后面的中括号 [] 内就是定义类型参数的地方，其中 T 为类型参数名，constraints.Integer 是对该类型参数的约束，即 T 应该满足的条件，在这里我们要求 T 是一个整数。剩下的代码就和普通没有泛型的代码一致了，只不过后面 T 可以当作一个类型来使用。</p> <h3 id="泛型语法">泛型语法</h3> <ul> <li> <p>函数名后可以附带一个方括号，包含了该函数涉及的类型参数（Type Paramters）的列表：<code>func F[T any](p T) { ... }</code></p> </li> <li> <p>这些类型参数可以在函数参数和函数体中（作为类型）被使用</p> </li> <li> <p>自定义类型也可以有类型参数列表：<code>type M[T any] []T</code></p> </li> <li> <p>每个类型参数对应一个类型约束，上述的 any 就是预定义的匹配任意类型的约束</p> </li> <li> <p>类型约束在语法上以 interface 的形式存在，在 interface 中嵌入类型 T 可以表示这个类型必须是 T:</p> </li> </ul> <pre><code class="language-go">type Integer1 interface {     int }</code></pre> <ul> <li>嵌入单个类型意义不大，我们可以用 | 来描述类型的 union:</li> </ul> <pre><code class="language-go">type Integer2 interface {     int ｜ int8 | int16 | int32 | int64 }</code></pre> <ul> <li>~T 语法可以表示该类型的「基础类型」是 T，比如说我们的自定义类型 type MyInt int 不满足上述的 Integer1 约束，但满足以下的约束:</li> </ul> <pre><code class="language-go">type Integer3 interface {     ~int }</code></pre> <h2 id="高阶函数实例">高阶函数实例</h2> <p>filter 操作是高阶函数的经典应用，它接受一个函数<code>f（func (T) bool）</code>和一个线性表<code> l（[] T）</code>，对 l 中的每个元素应用函数<code>f</code>，如结果为<code>true</code>，则将该元素加入新的线性表里，否则丢弃该元素，最后返回新的线性表。</p> <pre><code class="language-go">func Filter[T any](f func(T) bool, src []T) []T {         var dst []T         for _, v := range src {                 if f(v) {                         dst = append(dst, v)                 }         }         return dst }  func main() {         src := []int{-2, -1, -0, 1, 2}         dst := Filter(func(v int) bool { return v &gt;= 0 }, src)         fmt.Println(dst) } // Output: // [0 1 2]</code></pre> <h2 id="让人开心的改变--">让人开心的改变 : )</h2> <h3 id="实现一个三元操作">实现一个三元操作</h3> <p>众所周知Go语言不支持三元运算符操作，现在有了泛型，让我们来模拟一个:</p> <pre><code class="language-go">// IFF if yes return a else b func IFF[T any](yes bool, a, b T) T { 	if yes { 		return a 	} 	return b }  // IFN if yes return func, a() else b(). func IFN[T any](yes bool, a, b func() T) T { 	if yes { 		return a() 	} 	return b() }  func main() {         a := -1 	assert.Equal(t, utils.IFF(a &gt; 0, a, 0), 0) 	assert.Equal(t, utils.IFN(a &gt; 0, func() int { return a }, func() int { return 0 }), 0) }</code></pre> <h2 id="令人沮丧-">令人沮丧 ????</h2> <h3 id="泛型类型系统的不足">泛型类型系统的不足</h3> <p>众多函数式特性的实现依赖于一个强大类型系统，Go 的类型系统显然不足以胜任, 在 Go 语言中引入泛型之后，类型系统有哪些水土不服的地方。</p> <h3 id="编译期类型判断">编译期类型判断</h3> <p>当我们在写一段泛型代码里的时候，有时候会需要根据 T 实际上的类型决定接下来的流程，可 Go 的完全没有提供在编译期操作类型的能力。运行期的 workaround 当然有，怎么做呢：将 T 转化为<code>interface{}</code>，然后做一次 type assertion, 比如我想实现一个通用的字符串类型到数字类型的转换函数:</p> <pre><code class="language-go">import "strconv"  type Number interface { 	int | int32 | int64 | uint32 | uint64 | float64 }  func Str2Number[N Number](strNumber string) (N, error) { 	var num N 	switch (interface{})(num).(type) { 	case int: 		cn, err := strconv.Atoi(strNumber) 		return N(cn), err 	case int32: 		cn, err := strconv.ParseInt(strNumber, 10, 32) 		return N(cn), err 	case int64: 		cn, err := strconv.ParseInt(strNumber, 10, 64) 		return N(cn), err 	case uint32: 		cn, err := strconv.ParseUint(strNumber, 10, 32) 		return N(cn), err 	case uint64: 		cn, err := strconv.ParseUint(strNumber, 10, 64) 		return N(cn), err 	case float64: 		cn, err := strconv.ParseFloat(strNumber, 64) 		return N(cn), err 	} 	return 0, nil }</code></pre> <h3 id="无法辨认基础类型">无法辨认「基础类型」</h3> <p>在类型约束中可以用 ~T 的语法约束所有 基础类型为 T 的类型，这是 Go 在语法层面上首次暴露出「基础类型」的概念，在之前我们只能通过 reflect.(Value).Kind 获取。而在 type assertion 和 type switch 里并没有对应的语法处理「基础类型」:</p> <pre><code class="language-go">type Int interface {         ~int ｜ ~uint }  func IsSigned[T Int](n T) {         switch (interface{})(n).(type) {         case int:                 fmt.Println("signed")         default:                 fmt.Println("unsigned")         } }  func main() {         type MyInt int         IsSigned(1)         IsSigned(MyInt(1)) } // Output: // signed // unsigned</code></pre> <p>乍一看很合理，MyInt 确实不是 int。那我们要如何在函数不了解 MyInt 的情况下把它当 int 处理呢, 比较抱歉的是目前在1.18中没办法对这个进行处理。</p> <h3 id="类型约束不可用于-type-assertion">类型约束不可用于 type assertion</h3> <p>一个直观的想法是单独定义一个 Signed 约束，然后判断 T 是否满足 Signed:</p> <pre><code class="language-go">type Signed interface {         ~int }  func IsSigned[T Int](n T) {         if _, ok := (interface{})(n).(Signed); ok {                 fmt.Println("signed")         } else {                 fmt.Println("unsigned")         } }</code></pre> <p>但很可惜，类型约束不能用于 type assertion/switch，编译器报错如下：</p> <blockquote> <p>interface contains type constraints</p> </blockquote> <p>尽管让类型约束用于 type assertion 可能会引入额外的问题，但牺牲这个支持让 Go 的类型表达能力大大地打了折扣。</p> <h2 id="总结">总结</h2> <ul> <li> <p>确实可以实现部分函数式特性能以更通用的方式。</p> </li> <li> <p>灵活度比代码生成更高 ，用法更自然，但细节上的小问题很多。</p> </li> <li> <p>1.18 的泛型在引入 type paramters 语法之外并没有其他大刀阔斧的改变，导致泛型和这个语言的其他部分显得有些格格不入，也使得泛型的能力受限。 至少在 1.18 里，我们要忍受泛型中存在的种种不一致。</p> </li> <li> <p>受制于 Go 类型系统的表达能力，我们无法表示复杂的类型约束，自然也无法实现完备的函数式特性。</p> </li> </ul> <h2 id="推广">推广</h2> <p>推广下个人项目，目前也正在使用Go 1.18的特性也踩了很多坑：</p> <p>YoyoGo is a simple, light and fast , dependency injection based micro-service framework written in Go. Support Nacos ,Consoul ,Etcd ,Eureka ,kubernetes.</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/yoyofx/yoyogo"  target="_blank" rel="nofollow">https://github.com/yoyofx/yoyogo</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-26174.htm">免费领养宠物狗套路骗局揭秘（免费领养宠物的平台是真的吗）</a></p>
+                                        <p>下一个：<a href="/news/article-26623.htm">请多多无货源店怎么开（拼多多无货源店怎么开）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-free-node-subscribe.htm" title="「10月7日」最高速度21.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月7日」最高速度21.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-clash-verge-rev-nodes.htm" title="「9月25日」最高速度20M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「9月25日」最高速度20M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-19-node-share.htm" title="「9月19日」最高速度21.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「9月19日」最高速度21.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-free-high-speed-nodes.htm" title="「12月4日」最高速度22.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月4日」最高速度22.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-free-subscribe-node.htm" title="「11月3日」最高速度21.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月3日」最高速度21.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-28-free-high-speed-nodes.htm" title="「9月28日」最高速度18.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「9月28日」最高速度18.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20162.htm" title="宠物店的猫粮（宠物店的猫粮好吗）">宠物店的猫粮（宠物店的猫粮好吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-node-share.htm" title="「10月18日」最高速度22.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月18日」最高速度22.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-clash-verge-rev-node.htm" title="「12月2日」最高速度21.3M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月2日」最高速度21.3M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-latest-clash-verge-rev-node.htm" title="「10月22日」最高速度18M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月22日」最高速度18M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
