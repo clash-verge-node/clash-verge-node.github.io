@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-33700.htm" />
+    <meta charset="utf-8">
+    <title>Python格式化字符串方法——以%占位操作符为例</title>
+        <meta name="description" content="#Python格式化字符串方法——以%占位操作符为例  ''' 在python的使用过程中，有时需要将输出的字符串做统一规定，因此需要提前编写一个字符串的模板。 模板中有格式符，这些格式符为最后输的字" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">Python格式化字符串方法——以%占位操作符为例</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code class="prism language-python"><span class="token comment">#Python格式化字符串方法——以%占位操作符为例</span>  <span class="token triple-quoted-string string">''' 在python的使用过程中，有时需要将输出的字符串做统一规定，因此需要提前编写一个字符串的模板。 模板中有格式符，这些格式符为最后输的字符串预先占据位置， 并规定其应该呈现的格式，包括字符的位置、对齐方式、空位补充方式等。 Python中内置的%操作符可用于格式化字符串操作，控制字符串的呈现格式。 Python中还有其他的格式化字符串的方式，但%操作符的使用是最方便的。  %格式符的语法：%[(name)][flags][width].[precision]typecode。  (name)参数：当使用字典作为真实值的存放容器，name在此对应输出值关联的字典的键名，必须使用小括号将键名括起来, 如果字典中不存在该键,则引发异常，否则输出该键对应的值； flags可以有+,-,' '或0。 +表示应该包含数字的正负号。-表示左对齐，没有则表示右对齐。 ' '为一个空格，表示在正数的左侧填充一个空格，从而与负数对齐。0表示使用0填充； width表示该输出值占用的宽度； precision表示小数点后精度； typecode表示输出值的类型，  具体含义如下： %s             字符串 (采用str()的显示) %r             字符串 (采用repr()的显示) #repr() 函数将对象转化为供解释器读取的形式,输出的字符加引号。 %c             单个字符 %b             二进制整数 %d,%i          十进制整数 %o             八进制整数 %x,%X          十六进制整数 %e,%E          指数 (基底写为e,E) %f,%F          浮点数 %g,%G          指数或浮点数 (根据显示长度) %u             无符号数（没有细查文档，经测试可以输出负数） %%             字符"%" '''</span>   <span class="token comment"># 例1：</span> <span class="token comment">#%格式符的语法：%[(name)][flags][width].[precision]typecode。</span> example_1 <span class="token operator">=</span> <span class="token string">"I'm %s, I'm %d years old."</span> <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token string">'wrh'</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>example_1<span class="token punctuation">)</span> <span class="token triple-quoted-string string">''' 输出结果： I'm wrh, I'm 29 years old. '''</span>  <span class="token comment">#例2：</span> <span class="token comment">#%格式符的语法：%[(name)][flags][width].[precision]typecode。</span> example_2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">"I'm %(name)s, I'm %(age)d years old."</span> <span class="token operator">%</span> <span class="token punctuation">{<!-- --></span><span class="token string">'name'</span><span class="token punctuation">:</span><span class="token string">'wrh'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span><span class="token number">29</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>example_2<span class="token punctuation">)</span> <span class="token triple-quoted-string string">''' 输出结果： I'm wrh, I'm 29 years old. '''</span>  <span class="token comment">#例3：</span> <span class="token comment">#%格式符的语法：%[(name)][flags][width].[precision]typecode。</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%+10x"</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment">#+表示应该包含数字的正负号，10表示宽度，表示十六进制（10的十六进制是a）</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%04d"</span> <span class="token operator">%</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">#0表示用0填充，4表示宽度，d表示十进制整数</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%6.3f"</span> <span class="token operator">%</span> <span class="token number">2.3</span><span class="token punctuation">)</span> <span class="token comment">#6表示宽度，3表示精确到小数点后三位，f表示浮点数</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%.*f"</span> <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">#width, precision为两个整数。我们可以利用*，来动态代入这两个量。4表示精确到小数点后四位。</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%*.f"</span> <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#width, precision为两个整数。我们可以利用*，来动态代入这两个量。4表示宽度为4。</span> <span class="token triple-quoted-string string">''' 输出结果：         +a 0005  2.300 1.2000    1 '''</span>  <span class="token comment">#例4</span> <span class="token comment">#%格式符的语法：%[(name)][flags][width].[precision]typecode。</span> a <span class="token operator">=</span> <span class="token string">'30c'</span> F <span class="token operator">=</span> <span class="token number">1.8</span><span class="token operator">*</span><span class="token builtin">float</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"%.1fF"</span> <span class="token operator">%</span> F<span class="token punctuation">)</span> <span class="token comment">#精确到小数点后1位，浮点数，第一个F为固定字符，第二个F是所要格式化的字符变量。</span>  <span class="token triple-quoted-string string">''' 输出结果： 86.0F '''</span>  <span class="token comment">#练习题：</span>  <span class="token comment">#假设：学生信息存放在一个字典数据中，格式如下：</span> student<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token string">'name'</span><span class="token punctuation">:</span><span class="token string">'小明'</span><span class="token punctuation">,</span><span class="token string">'class'</span><span class="token punctuation">:</span><span class="token number">20190301</span><span class="token punctuation">,</span><span class="token string">'score'</span><span class="token punctuation">:</span><span class="token number">597.5</span><span class="token punctuation">}</span> <span class="token comment">#1.输出学生姓名，右对齐，直接使用真实值</span> <span class="token comment">#%格式符的语法：%[(name)][flags][width].[precision]typecode。</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%s同学'</span> <span class="token operator">%</span> student<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">#2.左对齐，名字占用4个长度，班级10个长度，分数7个长度的浮点数，真实值使用元组存储</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%10s班 %-4s同学，总分:%7.2f'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>student<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>student<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>student<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#3.#右对齐其他格式与上例同，只是格式化字符串和真实值存放在变量中，输出时格式化处理</span> <span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'%10s班 %-4s同学，总分:%7.2f'</span> value<span class="token operator">=</span><span class="token punctuation">(</span>student<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>student<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>student<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">format</span> <span class="token operator">%</span> value<span class="token punctuation">)</span> <span class="token comment">#4.右对齐其他格式与上例同，只是格式化字符串和真实值存放在变量中，将格式化处理结果存放到变量再输出</span> <span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'%10s班 %-4s同学，总分:%7.2f'</span> value<span class="token operator">=</span><span class="token punctuation">(</span>student<span class="token punctuation">[</span><span class="token string">'class'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>student<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>student<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> output<span class="token operator">=</span><span class="token builtin">format</span> <span class="token operator">%</span> value <span class="token keyword">print</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span> <span class="token comment">#5.使用字典存放真实值,直接格式化输出</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%(class)10s班 %(name)-4s同学，总分:%(score)7.2f'</span> <span class="token operator">%</span> student<span class="token punctuation">)</span> <span class="token comment">#6.使字典存放真实值，用变量方式存放格式化字符串</span> <span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'%(class)10s班 %(name)-4s同学，总分:%(score)7.2f'</span> output<span class="token operator">=</span> <span class="token builtin">format</span> <span class="token operator">%</span> student <span class="token keyword">print</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span>  <span class="token triple-quoted-string string">''' 输出结果：   小明同学   20190301班 小明  同学，总分: 597.50   20190301班 小明  同学，总分: 597.50   20190301班 小明  同学，总分: 597.50   20190301班 小明  同学，总分: 597.50   20190301班 小明  同学，总分: 597.50  '''</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-33215.htm">被猫抓了没有破皮需要打针吗（被猫抓了但是没有破皮需要打针吗）</a></p>
+                                        <p>下一个：<a href="/news/article-33701.htm">南京宠物狗领养中心电话是多少（南京宠物领养吧）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-high-speed-nodes.htm" title="「10月15日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月15日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-18-free-node-subscribe-links.htm" title="「11月18日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月18日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-14-clash-verge-rev-node-share.htm" title="「10月14日」最高速度22.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月14日」最高速度22.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-30-clash-verge-rev-github.htm" title="「9月30日」最高速度23M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「9月30日」最高速度23M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-13-node-share.htm" title="「10月13日」最高速度22.5M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月13日」最高速度22.5M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-clash-verge-rev-node.htm" title="「11月23日」最高速度20M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月23日」最高速度20M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31247.htm" title="猫三联每针需要间隔多久打（猫三联一共几针分几次打完?）">猫三联每针需要间隔多久打（猫三联一共几针分几次打完?）</a></li>
+                        <li class="py-2"><a href="/news/article-21543.htm" title="动物疫苗行业排名前十（动物疫苗行业排名前十名）">动物疫苗行业排名前十（动物疫苗行业排名前十名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-29-clash-verge-rev-nodes.htm" title="「12月29日」最高速度21M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月29日」最高速度21M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20162.htm" title="宠物店的猫粮（宠物店的猫粮好吗）">宠物店的猫粮（宠物店的猫粮好吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

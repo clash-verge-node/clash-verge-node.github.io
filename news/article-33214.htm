@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-33214.htm" />
+    <meta charset="utf-8">
+    <title>Node.js躬行记半吊子的可视化搭建系统</title>
+        <meta name="description" content="　　我们组维护的管理后台会接到很多开发需求，每次新开页面，就会到处复制黏贴相关代码。 　　并且还会经常性的翻阅文档，先在书签或地址栏输入WIKI地址，然后找到那一份说明文档，再定位到要看的组件位置。 " />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">Node.js躬行记半吊子的可视化搭建系统</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>　　我们组维护的管理后台会接到很多开发需求，每次新开页面，就会到处复制黏贴相关代码。</p> <p>　　并且还会经常性的翻阅文档，先在书签或地址栏输入WIKI地址，然后找到那一份说明文档，再定位到要看的组件位置。</p> <p>　　虽然单人损耗的时间并不是非常多，但还是会打断思路，影响开发的流畅性，当把所有人的时间累加起来，那损耗的时间也很可观。</p> <p>　　为了能提升团队成员的开发效率，就开始构思一套可视化搭建系统。理想状态下，拖动组件，配置交互和样式，页面生成，直接可用。</p> <p>　　但是要完成这套功能，开发成本比较大，现在我想先解决当前的痛点，减少代码复制的频率和快速读取组件文档。</p> <p>　　为此，在构思了好多天后，打算搞一个半吊子的可视化搭建系统。</p> <p>　　所谓半吊子是指搭建完后，点击生成，会在后台创建视图和数据两个脚本文件、自动添加权限、新增菜单栏，不过后续我们还得继续做开发，完善页面功能。</p> </h1> <p>　　界面分成左右两部分，左边是配置区域，右边空白处是组件的预览区域。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/6c91afe56c60f194b91e9600c556324b.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="800"/></p> <p><span style="font-size: 16px"><strong>1）组件区域</strong></span></p> <p>　　组件区域的第一个下拉框可以选择Ant Design和部分模板组件，选中后，会替换组件地址的链接，点击就能跳转到组件的说明文档。</p> <p>　　第二个下拉框能选择页面中需要的组件，例如图中的提示组件，点击添加后会在右边显示，并且还会提供一个删除图标，目前暂不支持拖动效果。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/e54b9ec93660f8b1dc6d796fda6d0adf.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="800"/></p> <p><span style="font-size: 16px"><strong>2）配置区域</strong></span></p> <p>　　在配置区域中，可以输入菜单名称、路由、文件目录和权限等信息。</p> <p>　　原先的话，还得手动的在路由和权限两个文件中新增配置项，现在都能自动化了。</p> <p>　　原理就是先用Node分别读取这两份文件，得到一个数组，然后将配置内容塞到此数组中，再将数组序列化写入文件内。</p> <p>　　注意，需求在引入模块（调用require()函数）前删除模块缓存，否则读到的将是之前的文件内容。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">权限文件的绝对路径</span> const absAuthorityPath = pathObj.resolve(__dirname, 'src/utils/authority.ts'<span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 0, 255, 1)">delete</span> require.cache[absAuthorityPath];<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除模块缓存</span> const authorities =<span style="color: rgba(0, 0, 0, 1)"> require(absAuthorityPath); const obj</span>=<span style="color: rgba(0, 0, 0, 1)"> {   id: authority,   pid: parent,   name: menu,   desc:</span>''<span style="color: rgba(0, 0, 0, 1)">,   routers: currentPath, }; authorities.push(obj);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">添加权限</span><span style="color: rgba(0, 128, 0, 1)"> //</span><span style="color: rgba(0, 128, 0, 1)">写入文件</span> fs.writeFileSync(absAuthorityPath, `module.exports = ${JSON.stringify(authorities,<span style="color: rgba(0, 0, 255, 1)">null</span>, 2)}`);</pre> </div> <p>　　fs.writeFileSync()用于同步写入文件。module.exports是Node的模块语法，而export default是ES6语法，Node原生并不支持，好在webpack对于这些模块化语法都支持。</p> <p>　　一旦点击生成文件按钮，在项目重新构建后，左边菜单列表就能出现刚刚配置的菜单名称（例如名称叫菜单测试），并且能够跳转，权限也加好了。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3b6c1d0d21461472dee98696fbdb4779.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="300"/></p> <p>　　视图和数据文件也是用Node创建的，在Node项目中写好一份模板字符串（下面是生成视图模板的函数），将可变部分作为参数传入。</p> <div class="cnblogs_code"> <pre>export<span style="color: rgba(0, 0, 255, 1)">function</span> setPageTemplate({name, antd, namespace, code=''<span style="color: rgba(0, 0, 0, 1)">, props, component}) {</span><span style="color: rgba(0, 0, 255, 1)">return</span> `import { connect, Dispatch, ${namespace}ModelState } from "umi"<span style="color: rgba(0, 0, 0, 1)">; import { setColumn } from</span>'@/utils/tools'<span style="color: rgba(0, 0, 0, 1)">; import { TEMPLATE_MODEL } from</span>'@/utils/constants'<span style="color: rgba(0, 0, 0, 1)">; ${antd}</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 页面参数类型</span><span style="color: rgba(0, 0, 0, 1)">interface ${name}Props {   dispatch: Dispatch;   state: ${namespace}ModelState; }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 全局声明</span><span style="color: rgba(0, 0, 0, 1)">${code} const ${name}</span>= ({ dispatch, state }: ${name}Props) =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> dispatch({ type: "xx/xx", payload: {} });</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 状态</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> const { } = state;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 通用组件配置</span><span style="color: rgba(0, 0, 0, 1)">  ${props}</span><span style="color: rgba(0, 0, 255, 1)">return</span> &lt;&gt;<span style="color: rgba(0, 0, 0, 1)">     ${component}</span>&lt;/&gt;;<span style="color: rgba(0, 0, 0, 1)">}; export</span><span style="color: rgba(0, 0, 255, 1)">default</span> connect((data: {${namespace}: ${namespace}ModelState}) =&gt;<span style="color: rgba(0, 0, 0, 1)"> ({ state: data.${namespace} }))(${name});`; }</span></pre> </div> </h1> <p>　　配置是本系统的核心，构思了很久，原先考虑了系统的灵活性，就想直接提供脚本编辑框，自定义逻辑。</p> <p>　　不过出现个问题，那就是我这边目前是用TypeScript语言开发的，那么我在自定义脚本逻辑时，也需要使用TypeScript语法。</p> <p>　　浏览器提供的<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">eval()</span></a></span> 函数并不支持TypeScript语法，需要先做转译，网上搜索后，得到了解决方案，下载了TypeScript库后。</p> <p>　　但是却一直报错，在网上也查到了些解决方案（<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/microsoft/TypeScript/issues/39436"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">方案一</span></a></span>，<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://stackoverflow.com/questions/45153848/evaluate-typescript-from-string"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">方案二</span></a></span>），不过并不适用于我目前的项目环境。</p> <div class="cnblogs_code"> <pre>./node_modules/typescript/lib/<span style="color: rgba(0, 0, 0, 1)">typescript.js Critical dependency: the request of a dependency is an expression  .</span>/node_modules/typescript/lib/<span style="color: rgba(0, 0, 0, 1)">typescript.js Critical dependency: the request of a dependency is an expression  .</span>/node_modules/typescript/lib/<span style="color: rgba(0, 0, 0, 1)">typescript.js Module not found: Can</span>'t resolve 'perf_hooks' in 'C:\Users\User\node_modules\typescript\lib'</pre> </div> <p>　　最终决定暂时放弃自定义脚本逻辑，先解决当前痛点，尽快将系统上线。</p> <p>　　期间还遇到个比较隐蔽的bug，如下所示，数组会先调用 toString() 转换成字符串，最终变为 eval("(1, 2)")，所以得到的值是 2。</p> <div class="cnblogs_code"> <pre>eval(`(${[1,2]})`);<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">2</span></pre> </div> <p>　　还遇到个问题，那就是在用<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">JSON.stringify()</span></a></span>&nbsp;序列化对象时，若参数是函数，那么就会被过滤掉。</p> <div class="cnblogs_code"> <pre>JSON.stringify({func:() =&gt; {}});  //"{}"</pre> </div> <p><span style="font-size: 16px"><strong>1）物料库</strong></span></p> <p>　　物料库中的组件分为两种，一种是自定义的<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/pwstrick/shin-admin/blob/main/docs/template.md"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">后台模板组件</span></a></span>，另一种是第三方的<span style="color: rgba(51, 102, 255, 1)"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://3x.ant.design/docs/react/introduce-cn"  target="_blank" rel="nofollow"><span style="color: rgba(51, 102, 255, 1)">Ant Design 3.X</span></a></span>组件。</p> <p>　　为了快速搭建页面，选择的组件是前者。这次顺便用TypeScript，再次完善了组件代码的类型声明。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/aa072c9bfb38f2243b69f4f4fbc7e411.jpg" alt="Node.js躬行记半吊子的可视化搭建系统" width="500"/></p> <p>　　后者只是用来文档查询和在模板字符串中拼接引入语句，如下所示。</p> <div class="cnblogs_code"> <pre>`import { ${antds.join(',')} } from 'antd';`</pre> </div> <p><span style="font-size: 16px"><strong>2）自定义组件</strong></span></p> <p>　　自定义组件的声明采用JSON格式，TypeScript声明的类型如下所示。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">interface OptionsType {   value: string;   label: string;   children: Array</span>&lt;<span style="color: rgba(0, 0, 0, 1)">{     value: string;     label: string;     link: string;</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">链接地址</span>     readonlyProps?: ObjectType;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">会影响组件的呈现，并且不能配置的属性</span>     readonlyStrProps?: string;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">待拼接的字符串属性</span>     handleProps?: (values:ObjectType) =&gt; ObjectType;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">在格式化表单数据后，再处理特定的组件属性</span>     handleStrProps?: (values:ObjectType) =&gt; string;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">拼接无法转换成字符串的属性</span>     props: Array&lt;<span style="color: rgba(0, 0, 0, 1)">{       label: string;       name: string;       params</span>?<span style="color: rgba(0, 0, 0, 1)">: ObjectType;       control: JSX.Element</span>| ((index: number) =&gt;<span style="color: rgba(0, 0, 0, 1)"> JSX.Element);       type</span>?<span style="color: rgba(0, 0, 0, 1)">: string;       initControl</span>?: (props:any) =&gt;<span style="color: rgba(0, 0, 0, 1)"> JSX.Element;     }</span>&gt;<span style="color: rgba(0, 0, 0, 1)">   }</span>&gt;<span style="color: rgba(0, 0, 0, 1)">; }</span></pre> </div> <p>　　链接地址就是说明文档的地址，在组件的属性中，有一部分是回调函数，而目前已经舍弃了自定义的回调逻辑。</p> <p>　　所以这部分属性要特殊处理（声明在&nbsp;readonlyProps），不能在界面中输入。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">        readonlyProps: {           initPanes: (record: ObjectType): TabPaneType[]</span>=&gt;<span style="color: rgba(0, 0, 0, 1)"> [             {               name:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,               key:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,               controls: [                 { label:</span>'测试组件', control: &lt;&gt;内容&lt;/&gt; }<span style="color: rgba(0, 0, 0, 1)">              ]             },           ],         },</span></pre> </div> <p>　　readonlyStrProps 就是&nbsp;readonlyProps 对应的字符串格式，该属性还会增加一些其它属性，配上注释，也相当于是份组件文档了。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">        readonlyStrProps: `,</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 标签栏内容回调函数，参数为 record，当标签栏只有一项时，将不显示菜单</span>         "initPanes": (record: ObjectType): TabPaneType[] =&gt;<span style="color: rgba(0, 0, 0, 1)"> [           {             name:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,             key:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,             controls: [               { label:</span>'测试组件', control: &lt;&gt;内容&lt;/&gt; }<span style="color: rgba(0, 0, 0, 1)">            ]           },         ],</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> useEffect钩子中的回调函数，参数是 record</span>         "effectCallback": (record: ObjectType) =&gt; {}`,</pre> </div> <p>　　handleProps() 是一个回调函数，在表单接收到数据后，有些组件需要再做一次特殊的处理。</p> <p>　　例如加些特定属性、数组元素合并成字符串等，从而才能顺利的在预览界面呈现。</p> <div class="cnblogs_code"> <pre>        handleProps: (values:ObjectType) =&gt; {<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">对表单中的值做处理</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 对接口数组做特殊处理,从['api', 'get']转换成api.get</span>           values.url &amp;&amp; (values.url = values.url.join('.'<span style="color: rgba(0, 0, 0, 1)">));</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 初始化表单需要的组件</span><span style="color: rgba(0, 0, 255, 1)">if</span>(values.controls.length === 0<span style="color: rgba(0, 0, 0, 1)">) {             values.controls</span>=<span style="color: rgba(0, 0, 0, 1)"> [               {                 label:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,                 name:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,                 control:</span>&lt;&gt;测试组件&lt;/&gt;<span style="color: rgba(0, 0, 0, 1)">              },             ];           }</span><span style="color: rgba(0, 0, 255, 1)">else</span><span style="color: rgba(0, 0, 0, 1)"> {             values.originControls</span>= values.controls;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">备份组件名称数组</span>             values.controls = values.controls.map((item:string) =&gt;<span style="color: rgba(0, 0, 0, 1)"> getControls(item));           }</span><span style="color: rgba(0, 0, 255, 1)">delete</span> values.controlskeys;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除冗余属性</span><span style="color: rgba(0, 0, 255, 1)">return</span><span style="color: rgba(0, 0, 0, 1)"> values;         },</span></pre> </div> <p>　　handleStrProps() 是在输出模板时使用，将那些特殊属性写成字符串形式。</p> <div class="cnblogs_code"> <pre>        handleStrProps: (values:ObjectType):string =&gt;<span style="color: rgba(0, 0, 0, 1)"> {</span><span style="color: rgba(0, 0, 255, 1)">if</span>(values.controls.length === 0<span style="color: rgba(0, 0, 0, 1)">) {</span><span style="color: rgba(0, 0, 255, 1)">delete</span> values.originControls;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除备份数组</span><span style="color: rgba(0, 0, 255, 1)">delete</span> values.controls;<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">删除原始属性</span><span style="color: rgba(0, 0, 255, 1)">return</span> `,"controls"<span style="color: rgba(0, 0, 0, 1)">: [               {                 label:</span>"示例"<span style="color: rgba(0, 0, 0, 1)">,                 name:</span>"demo"<span style="color: rgba(0, 0, 0, 1)">,                 control:</span>&lt;&gt;测试组件&lt;/&gt;<span style="color: rgba(0, 0, 0, 1)">              },             ]`;           }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 组件名称数组处理</span>           const newControls = values.originControls.map((item:string) =&gt;<span style="color: rgba(0, 0, 0, 1)"> getStrControls(item));</span><span style="color: rgba(0, 0, 255, 1)">delete</span><span style="color: rgba(0, 0, 0, 1)"> values.originControls;</span><span style="color: rgba(0, 0, 255, 1)">delete</span><span style="color: rgba(0, 0, 0, 1)"> values.controls;</span><span style="color: rgba(0, 0, 255, 1)">return</span> `,"controls": [${newControls.join(','<span style="color: rgba(0, 0, 0, 1)">)}]`;         },</span></pre> </div> <p>　　在经过一系列的处理后，将一些字符串代码传递给接口，接口最后拼接成两个文件，输出到指定目录中。</p> <p>　　不过生成的代码，排版有点混乱，每次都还需要手动格式化一下。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-32753.htm">动物疫苗价格表图片及价格大全集最新（动物疫苗的使用方法及注意事项）</a></p>
+                                        <p>下一个：<a href="/news/article-33215.htm">被猫抓了没有破皮需要打针吗（被猫抓了但是没有破皮需要打针吗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-clash-verge-rev-nodes.htm" title="「11月30日」最高速度22.4M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月30日」最高速度22.4M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-30855.htm" title="宠物猫疫苗要多少钱（宠物猫接种疫苗多少钱）">宠物猫疫苗要多少钱（宠物猫接种疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-30371.htm" title="中国兽药厂家五十强企业名单公示（中国兽药厂家五十强企业名单公示最新）">中国兽药厂家五十强企业名单公示（中国兽药厂家五十强企业名单公示最新）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-clash-verge-rev-node-share.htm" title="「11月24日」最高速度20.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月24日」最高速度20.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-clash-verge-rev-node-share.htm" title="「11月6日」最高速度18.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月6日」最高速度18.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-free-node-subscribe-links.htm" title="「11月20日」最高速度21.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月20日」最高速度21.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-3-free-clash-verge-rev-node.htm" title="「10月3日」最高速度19.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月3日」最高速度19.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-21-node-share-links.htm" title="「9月21日」最高速度20.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「9月21日」最高速度20.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29893.htm" title="动物疫苗多少钱打一次针啊（小动物打疫苗多少钱一只）">动物疫苗多少钱打一次针啊（小动物打疫苗多少钱一只）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-node-subscribe-links.htm" title="「12月12日」最高速度19.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月12日」最高速度19.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
