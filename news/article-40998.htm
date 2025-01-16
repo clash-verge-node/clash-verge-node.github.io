@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-40998.htm" />
+    <meta charset="utf-8">
+    <title>Wireshark入门到超神-第一章-过滤器-数据包解析</title>
+        <meta name="description" content="目录  过滤器 数据包解析 参考   推荐阅读：  https://www.cnblogs.com/zwtblog/tag/计算机网络/  过滤器 显示过滤器 和 捕获过滤器，俩者使用非常类似。  在" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">Wireshark入门到超神-第一章-过滤器-数据包解析</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E8%BF%87%E6%BB%A4%E5%99%A8" rel="nofollow">过滤器</a></li> <li><a href="#%E6%95%B0%E6%8D%AE%E5%8C%85%E8%A7%A3%E6%9E%90" rel="nofollow">数据包解析</a></li> <li><a href="#%E5%8F%82%E8%80%83" rel="nofollow">参考</a></li> </ul> </div> <p>推荐阅读：</p> <ul> <li><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/zwtblog/tag/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"  target="_blank" rel="nofollow">https://www.cnblogs.com/zwtblog/tag/计算机网络/</a></li> </ul> <h2 id="过滤器">过滤器</h2> <p><strong>显示过滤器 和 捕获过滤器</strong>，俩者使用非常类似。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/0e4d566e5dbc88eba5661cb6fed32d04.jpg" alt="Wireshark入门到超神-第一章-过滤器-数据包解析"></p> <p>在Wireshark首页未选定接口前可以输入捕获规则。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/e62645075aef7bbe572f7978b60075c9.jpg" alt="Wireshark入门到超神-第一章-过滤器-数据包解析"></p> <blockquote> <p>多个过滤要求可以用连接词  &amp;&amp;</p> </blockquote> <hr/> <p>wireshark进行过滤时，按照过滤的语法可分为<code>协议过滤</code> 和<code>内容过滤</code>。</p> <p>对标准协议，既支持粗粒度的过滤如HTTP，也支持细粒度的、依据协议属性值进行的过滤。</p> <blockquote> <p>如<code>tcp.port==53、http.request.method=="GET"</code></p> </blockquote> <p>对内容的过滤，既支持深度的字符串匹配过滤如<code>http contains "Server"</code>，也支持特定偏移处值的匹配过滤。</p> <blockquote> <p>如<code>tcp[20:3] == 47:45:54</code></p> </blockquote> <p>例子：</p> <ul> <li>过滤IP和MAC地址</li> </ul> <pre><code class="language-txt">//ip 改成 eth，就是过滤 mac 地址  ip.addr == 8.8.8.8 ip.src == 8.8.8.8 ip.dst == 8.8.8.8 ip.addr == 10.0.0.0/16</code></pre> <ul> <li>过滤端口</li> </ul> <pre><code class="language-txt">//tcp 可以改成 udp  tcp.port == 9090 tcp.dstport == 9090 tcp.srcport == 9090 tcp.port &gt;=1 and tcp.port &lt;= 80</code></pre> <ul> <li>根据长度过滤</li> </ul> <pre><code class="language-txt">tcp.len &gt;= 7      (tcp data length) ip.len == 88      (except fixed header length) udp.length == 26  (fixed header length 8 and data length) frame.len == 999  (all data packet length)</code></pre> <ul> <li>HTTP数据包过滤</li> </ul> <pre><code class="language-txt">http.host == xxx.com // 过滤 host  http.response == 1 // 过滤所有的 http 响应包  http.response.code == 302 // 过滤状态码 302  http.request.method==POST  // 过滤 POST 请求包  http.cookie contains xxx // cookie 包含 xxx  http.request.uri=="/robots.txt" //过滤请求的uri，取值是域名后的部分  http.request.full_uri=="http://.com" // 过滤含域名的整个url  http.server contains "nginx" //过滤http头中server字段含有nginx字符的数据包  http.content_type == "text/html" //过滤content_type是text/html  http.content_encoding == "gzip" //过滤content_encoding是gzip的http包  http.transfer_encoding == "xx" //根据transfer_encoding过滤  http.content_length == 279  http.content_length_header == "279" //根据content_length的数值过滤  http.request.version == "HTTP/1.1" //过滤HTTP/1.1版本的http包，包括请求和响应</code></pre> <ul> <li>可用协议</li> </ul> <pre><code class="language-txt">tcp、udp、arp、icmp、http、smtp、ftp、dns、msnms、ip、ssl、oicq、bootp</code></pre> <h2 id="数据包解析">数据包解析</h2> <p>Packet Details Pane(数据包详细信息), 在数据包列表中选择指定数据包，在数据包详细信息中会显示数据包的所有详细信息内容。</p> <p>数据包详细信息面板是最重要的，用来查看协议中的每一个字段。各行信息分别为：</p> <p>（1）Frame:   物理层的数据帧概况</p> <p>（2）Ethernet II: 数据链路层以太网帧头部信息</p> <p>（3）Internet Protocol Version 4: 互联网层IP包头部信息</p> <p>（4）Transmission Control Protocol:  传输层T的数据段头部信息</p> <p>（5）Hypertext Transfer Protocol:  应用层的信息</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/b5be880db15d192b0b42604e065eff47.jpg" alt="Wireshark入门到超神-第一章-过滤器-数据包解析"></p> <hr/> <p>从下图可以看到Wireshark捕获到的数据包中的每个字段：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/cca01cf8dca8a6b83bc234a6ba8ea4bd.jpg" alt="Wireshark入门到超神-第一章-过滤器-数据包解析"></p> <h2 id="参考">参考</h2> <ul> <li> <p>Wireshark-入门到超神</p> </li> <li> <p>显示过滤器-<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/v1vvwv/p/Wireshark-filtering-rules.html"  target="_blank" rel="nofollow">https://www.cnblogs.com/v1vvwv/p/Wireshark-filtering-rules.html</a></p> </li> <li> <p>捕获过滤器-<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/xianyue/p/7141948.html"  target="_blank" rel="nofollow">https://www.cnblogs.com/xianyue/p/7141948.html</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://zhuanlan.zhihu.com/p/272685665"  target="_blank" rel="nofollow">https://zhuanlan.zhihu.com/p/272685665</a></p> </li> <li> <p>数据分析-<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://cloud.tencent.com/developer/article/1908893?from=article.detail.1380105"  target="_blank" rel="nofollow">https://cloud.tencent.com/developer/article/1908893?from=article.detail.1380105</a></p> </li> </ul> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40997.htm">基于vue+springboot，实现图片base64转码保存到数据库</a></p>
+                                        <p>下一个：<a href="/news/article-41494.htm">免费领养宠物有套路吗知乎（免费领养宠物的平台是真的吗）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-33700.htm" title="Python格式化字符串方法——以%占位操作符为例">Python格式化字符串方法——以%占位操作符为例</a></li>
+                        <li class="py-2"><a href="/news/article-36228.htm" title="为什么猫不打疫苗不能绝育呢视频（家猫为什么不打疫苗）">为什么猫不打疫苗不能绝育呢视频（家猫为什么不打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-30855.htm" title="宠物猫疫苗要多少钱（宠物猫接种疫苗多少钱）">宠物猫疫苗要多少钱（宠物猫接种疫苗多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-27088.htm" title="如何设计一个高效的的消息队列？_在线工具">如何设计一个高效的的消息队列？_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-free-subscribe-node.htm" title="「11月3日」最高速度21.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月3日」最高速度21.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28477.htm" title="成都宠物领养中心有哪些地方好（成都宠物领养中心有哪些地方好一点）">成都宠物领养中心有哪些地方好（成都宠物领养中心有哪些地方好一点）</a></li>
+                        <li class="py-2"><a href="/news/article-40997.htm" title="基于vue+springboot，实现图片base64转码保存到数据库">基于vue+springboot，实现图片base64转码保存到数据库</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-clash-verge-rev-windows.htm" title="「12月26日」最高速度21.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月26日」最高速度21.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25690.htm" title="async-validator 源码学习笔记validate 方法">async-validator 源码学习笔记validate 方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-4-node-share.htm" title="「11月4日」最高速度20.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月4日」最高速度20.7M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

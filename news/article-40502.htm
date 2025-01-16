@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-40502.htm" />
+    <meta charset="utf-8">
+    <title>VUE3.0使用ElementPlus开发登录界面</title>
+        <meta name="description" content="创建项目web&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&gt;vue create web30_3 》创建过程中选项&nbsp; &nbsp; &nbsp; " />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">VUE3.0使用ElementPlus开发登录界面</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <ul> <li>创建项目web&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&gt;vue create web30_3</li> <li>》创建过程中选项&nbsp; &nbsp; &nbsp; &nbsp;选择 Manually select features</li> <li>》创建过程中选项&nbsp; &nbsp; &nbsp; &nbsp;选择Babel，Router, Vuex</li> <li>》创建过程中选项&nbsp; &nbsp; &nbsp; &nbsp;选择版本3.0</li> <li>》创建过程中选项&nbsp; &nbsp; &nbsp; &nbsp;选择In dedicated config files</li> <li>》创建过程中选项&nbsp; &nbsp; &nbsp; &nbsp;如果保存选择，则对 Save this as a preset for future project 选择yes</li> <li>cd web30_3</li> <li>npm run serve</li> <li>安装插件&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &gt;npm i element-plus --save&nbsp; &nbsp;注--save作用是项目拷贝时已经有包保存</li> <li>修改src下main.js文件，见编程说明部分2.1</li> </ul> </h1> <h2>2.1 main.js 修改说明</h2> <p>增加两行内容</p> <p>import ElementPlus from 'element-plus'</p> <p>import 'element-plus/lib/theme-chalk/index.css'</p> <p>再用use引入。这点与vue2.0 编程一致。</p> <pre><code class="language-javascript">import {createApp} from 'vue' import App from './App.vue' import router from './router' import store from './store' import ElementPlus from 'element-plus' import 'element-plus/lib/theme-chalk/index.css'  createApp(App).use(store).use(router).use(ElementPlus).mount(rootContainer:'#app')</code></pre> <h2>&nbsp;2.2 设计login页面</h2> <p>设计表单，形成为独立Login页面，可以单独建立目录来存放，如后台 /back，则该文件为src/views/back/Login.vue</p> <p>全部代码为：</p> <pre><code class="language-html">&lt;template&gt;     &lt;el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"&gt;         &lt;el-form-item label="密码" prop="pass"&gt;             &lt;el-input type="password" v-model="ruleForm.pass" autocomplete="off"&gt;&lt;/el-input&gt;         &lt;/el-form-item&gt;         &lt;el-form-item label="确认密码" prop="checkPass"&gt;             &lt;el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"&gt;&lt;/el-input&gt;         &lt;/el-form-item&gt;         &lt;el-form-item label="年龄" prop="age"&gt;             &lt;el-input v-model.number="ruleForm.age"&gt;&lt;/el-input&gt;         &lt;/el-form-item&gt;         &lt;el-form-item&gt;             &lt;el-button type="primary" @click="submitForm('ruleForm')"&gt;提交&lt;/el-button&gt;             &lt;el-button @click="resetForm('ruleForm')"&gt;重置&lt;/el-button&gt;         &lt;/el-form-item&gt;     &lt;/el-form&gt; &lt;/template&gt;  &lt;script&gt;     export default {         data() {             var checkAge = (rule, value, callback) =&gt; {                 if (!value) {                     return callback(new Error('年龄不能为空'));                 }                 setTimeout(() =&gt; {                     if (!Number.isInteger(value)) {                         callback(new Error('请输入数字值'));                     } else {                         if (value &lt; 18) {                             callback(new Error('必须年满18岁'));                         } else {                             callback();                         }                     }                 }, 1000);             };             var validatePass = (rule, value, callback) =&gt; {                 if (value === '') {                     callback(new Error('请输入密码'));                 } else {                     if (this.ruleForm.checkPass !== '') {                         this.$refs.ruleForm.validateField('checkPass');                     }                     callback();                 }             };             var validatePass2 = (rule, value, callback) =&gt; {                 if (value === '') {                     callback(new Error('请再次输入密码'));                 } else if (value !== this.ruleForm.pass) {                     callback(new Error('两次输入密码不一致!'));                 } else {                     callback();                 }             };             return {                 ruleForm: {                     pass: '',                     checkPass: '',                     age: ''                 },                 rules: {                     pass: [                         { validator: validatePass, trigger: 'blur' }                     ],                     checkPass: [                         { validator: validatePass2, trigger: 'blur' }                     ],                     age: [                         { validator: checkAge, trigger: 'blur' }                     ]                 }             };         },         methods: {             submitForm(formName) {                 alert(1)                 this.$refs[formName].validate((valid) =&gt; {                     if (valid) {                         alert('submit!');                     } else {                         console.log('error submit!!');                         return false;                     }                 });             },             resetForm(formName) {                 this.$refs[formName].resetFields();             }         }     } &lt;/script&gt;  &lt;style scoped&gt; &lt;/style&gt;</code></pre> <h2>2.3 App.vue 嵌入login页面</h2> <pre><code class="language-html hljs">&lt;router-link to="/Login"&gt;登录&lt;/router-link&gt; &lt;el-button @click="this.$router.push('/about')"&gt;跳转&lt;/el-button&gt;</code></pre> <p>全文件如下：</p> <pre><code class="language-html">&lt;template&gt;   &lt;div id="nav"&gt;     &lt;router-link to="/"&gt;Home&lt;/router-link&gt; |     &lt;router-link to="/Login"&gt;登录&lt;/router-link&gt;     &lt;el-button @click="this.$router.push('/about')"&gt;跳转&lt;/el-button&gt;   &lt;/div&gt;   &lt;router-view/&gt; &lt;/template&gt;  &lt;style&gt; #app {   font-family: Avenir, Helvetica, Arial, sans-serif;   -webkit-font-smoothing: antialiased;   -moz-osx-font-smoothing: grayscale;   text-align: center;   color: #2c3e50; }  #nav {   padding: 30px; }  #nav a {   font-weight: bold;   color: #2c3e50; }  #nav a.router-link-exact-active {   color: #42b983; } &lt;/style&gt;</code></pre> <h2>&nbsp;2.4 修改路由文件</h2> <p>router/index.js 需要配置网页路由</p> <pre>, {   path: '/Login',   name: 'Login',   // route level code-splitting   // this generates a separate chunk (about.[hash].js) for this route   // which is lazy-loaded when the route is visited.   component: () =&gt; import(/* webpackChunkName: "about" */ '../views/back/Login.vue') }</pre> <p>形成为如下文件</p> <pre><code class="language-javascript">import { createRouter, createWebHashHistory } from 'vue-router' import Home from '../views/Home.vue'  const routes = [   {     path: '/',     name: 'Home',     component: Home   },   {     path: '/about',     name: 'About',     // route level code-splitting     // this generates a separate chunk (about.[hash].js) for this route     // which is lazy-loaded when the route is visited.     component: () =&gt; import(/* webpackChunkName: "about" */ '../views/About.vue')   },   {     path: '/Login',     name: 'Login',     component: ()=&gt;import('../views/back/Login')   } ]  const router = createRouter({   history: createWebHashHistory(),   routes })  export default router</code></pre> </h1> <p>D:\workspace_vue\web30_3&gt;npm run serve</p> <p>&gt; web30_3@0.1.0 serve D:\workspace_vue\web30_3<br /> &gt; vue-cli-service serve</p> <p>&nbsp;INFO &nbsp;Starting development server...<br /> 98% after emitting CopyPlugin</p> <p>&nbsp;DONE &nbsp;Compiled successfully in 7941ms</p> <p>&nbsp;&nbsp; App running at:<br /> &nbsp; - Local: &nbsp; http://localhost:8080/<br /> &nbsp; - Network: http://192.168.137.168:8080/</p> <p>&nbsp; Note that the development build is not optimized.<br /> &nbsp; To create a production build, run npm run build.<br /> 现在可以输入网址，http://192.168.137.168:8080/，在浏览器可以看到首页Home，再点击登录，可以进入登录页面。后面就是后台的对接工作了。</p> <p>http://192.168.137.168:8080/</p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220607/ef66e5d95bb6140497172268e6b7554b.jpg"></p> <p>&nbsp;点击登录得到：</p> <p style="text-align:center;"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220607/44baac3166bba731bb8dedb9ccfc33f4.jpg"></p> </h1> <p>网址为<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://element-plus.gitee.io/#/zh-CN"  rel="nofollow">https://element-plus.gitee.io/#/zh-CN</a></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-40015.htm">动物医院实践心得2000字左右（动物医院实训总结）</a></p>
+                                        <p>下一个：<a href="/news/article-40503.htm">新鲜出炉：appium2.0+ 单点触控和多点触控新的解决方案_在线工具</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-node-share.htm" title="「11月28日」最高速度20.4M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月28日」最高速度20.4M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-high-speed-nodes.htm" title="「1月6日」最高速度18.5M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月6日」最高速度18.5M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22457.htm" title="PHP如何访问全局类">PHP如何访问全局类</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-high-speed-nodes.htm" title="「10月15日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月15日」最高速度21.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28016.htm" title="C#操作Byte数组和十六进制进行互转_C#教程">C#操作Byte数组和十六进制进行互转_C#教程</a></li>
+                        <li class="py-2"><a href="/news/article-40997.htm" title="基于vue+springboot，实现图片base64转码保存到数据库">基于vue+springboot，实现图片base64转码保存到数据库</a></li>
+                        <li class="py-2"><a href="/news/article-40015.htm" title="动物医院实践心得2000字左右（动物医院实训总结）">动物医院实践心得2000字左右（动物医院实训总结）</a></li>
+                        <li class="py-2"><a href="/news/article-36572.htm" title="天照宠物医院大兴店电话多少号码（北京天照爱宠物医院）">天照宠物医院大兴店电话多少号码（北京天照爱宠物医院）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-free-high-speed-nodes.htm" title="「12月11日」最高速度20.3M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月11日」最高速度20.3M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31788.htm" title="C# 11 对 ref 和 struct 的改进">C# 11 对 ref 和 struct 的改进</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
