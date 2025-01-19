@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-41998.htm" />
+    <meta charset="utf-8">
+    <title>SSM框架中实现数据库操作-从零学习SSM框架（3）</title>
+        <meta name="description" content="前言  我的所有博客操作均有相应截图，所以只要跟着做，一定是能跑通的。  本篇讲到了在后台实现数据库的操作，涉及的数据的增删改查，以及一些框架自带函数的初步使用。如果没有配置好SSM框架，那就赏脸看一" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Verge Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-verge-node.github.io/news/article-41998.htm" />
+    <meta property="og:site_name" content="Clash Verge Node免费机场节点分享官网" />
+    <meta property="og:title" content="SSM框架中实现数据库操作-从零学习SSM框架（3）" />
+    <meta property="og:image" content="https://clash-verge-node.github.io/uploads/20240912-1/16fe5c90077e6a7d351a6c595ed249aa.webp" />
+        <meta property="og:release_date" content="2025-01-17T09:31:33" />
+    <meta property="og:updated_time" content="2025-01-17T09:31:33" />
+        <meta property="og:description" content="前言  我的所有博客操作均有相应截图，所以只要跟着做，一定是能跑通的。  本篇讲到了在后台实现数据库的操作，涉及的数据的增删改查，以及一些框架自带函数的初步使用。如果没有配置好SSM框架，那就赏脸看一" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">SSM框架中实现数据库操作-从零学习SSM框架（3）</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h2><a id="_0" rel="nofollow"></a>前言</h2> <ul> <li>我的所有博客操作均有相应截图，所以只要跟着做，一定是能跑通的。</li> </ul> <p>本篇讲到了在后台实现数据库的操作，涉及的数据的增删改查，以及一些框架自带函数的初步使用。如果没有配置好SSM框架，那就赏脸看一下<br /><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/babybabyup/article/details/79687097"  rel="nofollow">https://blog.csdn.net/babybabyup/article/details/79687097</a> 配置篇呗！</p> <h2><a id="_7" rel="nofollow"></a>工具</h2> <ul> <li>本机mysql数据库（database=helloword，table=user）</li> <li>IDEA</li> </ul> <h2><a id="_11" rel="nofollow"></a>具体操作</h2> <h4><a id="_12" rel="nofollow"></a>自动生成数据库函数</h4> <ul> <li>打开IDEA左栏中的<code>Maven project</code>-&gt;<code>helloworld Maven WebAPP</code>-&gt;<code>Plugins</code>-&gt;<code>mybatis-generator</code> 双击出现的<code>mybatieos-generator:generator</code></li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/d1fc0fdd249ab96197771b14908988bd.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"></p> <p>等待其完成后，控制台输出<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/69efb1eb72870a732ef79d18b15f35b9.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"></p> <p>并且生成相应的函数以及实体代码，dao层接口</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/9e841fa3c6e15407bd0a66d3ed2de38c.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 在<code>dao</code> 层接口中，<code>mybatis</code> 生成了六个函数接口，分别是</p> <pre><code>int deleteByPrimaryKey(Integer id);  int insert(User record);  int insertSelective(User record);  User selectByPrimaryKey(Integer id);  int updateByPrimaryKeySelective(User record);  int updateByPrimaryKey(User record);</code></pre> <p>解释一下各个函数的意义吧</p> <ul> <li><code>deleteByPrimaryKey(Integer id)</code> :通过主键id在数据库中删除一条数据，成功则返回1，失败则返回0；</li> <li><code>insert(User record)</code> :插入数据，要注意如果数据库中的属性不能为空，那么对象记录record的所有属性一定要全部不为null，否则会插入失败。</li> <li><code>insertSelective(User record)</code> :</li> <li><code>selectByPrimaryKey(Integer id)</code> :通过主键id进行查找，查找到了则返回实体User，也就是一个对象，数据库中没有此条记录，则返回null；</li> <li><code>updateByPrimaryKeySelective(User record)</code>:更新某条 User 记录，但是如果record某些属性为空，则不会用空值去代替已存在的属性，即只是更新record设置的属性。</li> <li><code>updateByPrimaryKey(User record)</code>：不考虑更新的数据如何，将User属性全部更新。</li> </ul> <p>任何函数都可以进行单元测试，挑<code>updateByPrimaryKeySelective(User record)</code>和<code>updateByPrimaryKey(User record)</code> 比较一下吧。<br /> 首先在<code>test</code>数据库<code>user</code>数据库中插入一条数据。如图：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/2ee56317b8661c1a778f57110690edc0.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 然后生成这两个函数的测试，具体方法可以参考https://blog.csdn.net/babybabyup/article/details/79687097</p> <pre><code>package com.springmvc.dao;  import com.springmvc.entity.User; import org.junit.After; import org.junit.Before; import org.junit.Test; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.context.ApplicationContext; import org.springframework.context.support.ClassPathXmlApplicationContext;   public class UserMapperTest {       @Autowired     UserMapper userMapper;     ApplicationContext applicationContext;       @Before     public void setUp() throws Exception {         applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext.xml");         userMapper = applicationContext.getBean(UserMapper.class);      }      @After     public void tearDown() throws Exception {     }      @Test     public void updateByPrimaryKeySelective() throws Exception {         User user = new User();         user.setId(1);         user.setName("James");        System.out.println(userMapper.updateByPrimaryKeySelective(user));     }      @Test     public void updateByPrimaryKey() throws Exception {              } }</code></pre> <p>不去设置<code>sex</code>属性则不会将<code>sex</code>更新，运行后的数据库变为<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/dcce7be9ca0c161d13708e1d8c9d5dcc.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 那么再看一下，另一个函数到底是什么结果，在测试类新增为：</p> <pre><code>@Test     public void updateByPrimaryKey() throws Exception {         User user = new User();         user.setId(1);         user.setSex("female");         System.out.println(userMapper.updateByPrimaryKey(user));       }</code></pre> <p>不设置<code>name</code>属性，更新后所有的属性都更新了，包括空属性<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/f744e7c2f2a3d5f2a2decb4e2a705ace.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"></p> <h4><a id="_113" rel="nofollow"></a>从前端进行数据库存储</h4> <p>在<code>index.jsp</code>中新建一个<code>form</code>进行数据传输</p> <pre><code>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt; &lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt; &lt;html&gt; &lt;head&gt;     &lt;title&gt;Index&lt;/title&gt;     &lt;script src="/js/jquery-3.2.1.min.js"&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; 这个是index页面&lt;br&gt; 新增代码&lt;br&gt; &lt;form action="/test2" method="post"&gt;     &lt;table&gt;         &lt;tr&gt;             &lt;td&gt;                 id:             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="text" name="id" placeholder="id"&gt;             &lt;/td&gt;         &lt;/tr&gt;         &lt;tr&gt;             &lt;td&gt;                 姓名：             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="text" name="name" placeholder="name"&gt;             &lt;/td&gt;         &lt;/tr&gt;         &lt;tr&gt;             &lt;td&gt;                 性别：             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="text" name="sex" placeholder="sex"&gt;             &lt;/td&gt;         &lt;/tr&gt;         &lt;tr&gt;             &lt;td&gt;                 &amp;nbsp;             &lt;/td&gt;             &lt;td&gt;                 &lt;input type="submit" value="提交"&gt;             &lt;/td&gt;         &lt;/tr&gt;     &lt;/table&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt;</code></pre> <p>在<code>IndexController.java</code>中，新添接收代码</p> <pre><code>package com.springmvc.controller;   import com.springmvc.entity.User; import com.springmvc.services.UserServices; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.stereotype.Controller; import org.springframework.ui.Model; import org.springframework.web.bind.annotation.ModelAttribute; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RequestMethod;    @Controller public class IndexController {      @Autowired     private UserServices userServices;     @RequestMapping(value = "/test2", method = RequestMethod.POST)     public String test2(@ModelAttribute User user, Model model) {         userServices.insert(user);         model.addAttribute("end","插入成功");         return "test1";     }  }</code></pre> <p>运行成功后，再次刷新数据库，则已经新添了一行数据<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220817/5525aa1a10bdfa551033396994b9a3a6.jpg" alt="SSM框架中实现数据库操作-从零学习SSM框架（3）"><br /> 这样，基本的操作已经完全OK了，继续后台开发的笔记。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41997.htm">vue使用store</a></p>
+                                        <p>下一个：<a href="/news/article-42505.htm">动物防疫站***需要什么手续呢（动物防疫站***需要什么手续呢图片）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-31246.htm" title="当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？">当我们更改小于当前序列号的AUTO_INCREMENT值时，MySQL将返回什么？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-4-today-clash-verge-rev-node.htm" title="「1月4日」最高速度22.3M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月4日」最高速度22.3M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-37545.htm" title="吉泰酒店集团有限公司（吉泰酒店集团有限公司招聘）">吉泰酒店集团有限公司（吉泰酒店集团有限公司招聘）</a></li>
+                        <li class="py-2"><a href="/news/article-33215.htm" title="被猫抓了没有破皮需要打针吗（被猫抓了但是没有破皮需要打针吗）">被猫抓了没有破皮需要打针吗（被猫抓了但是没有破皮需要打针吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-latest-clash-verge-rev-node.htm" title="「10月22日」最高速度18M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「10月22日」最高速度18M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-node-share.htm" title="「1月5日」最高速度18.7M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月5日」最高速度18.7M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29416.htm" title="宠物领养app下载苹果版安装（宠物领养app下载苹果版安装最新）">宠物领养app下载苹果版安装（宠物领养app下载苹果版安装最新）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-clash-verge-rev-node-github.htm" title="「11月27日」最高速度19.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月27日」最高速度19.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23827.htm" title="小型宠物粮食加工设备厂家排名前十（小型宠物粮食加工设备厂家排名前十名）">小型宠物粮食加工设备厂家排名前十（小型宠物粮食加工设备厂家排名前十名）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-today-clash-verge-rev-node.htm" title="「1月19日」最高速度18.3M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月19日」最高速度18.3M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">57</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
