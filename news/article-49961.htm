@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-49961.htm" />
+    <meta charset="utf-8">
+    <title>ElasticSearch基础学习（SpringBoot集成ES）</title>
+        <meta name="description" content="一、概述 什么是ElasticSearch？ ElasticSearch，简称为ES， ES是一个开源的高扩展的分布式全文搜索引擎&nbsp;。 它可以近乎实时的存储、检索&nbsp;数据；本身扩展性" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Verge Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-verge-node.github.io/news/article-49961.htm" />
+    <meta property="og:site_name" content="Clash Verge Node免费机场节点分享官网" />
+    <meta property="og:title" content="ElasticSearch基础学习（SpringBoot集成ES）" />
+    <meta property="og:image" content="https://clash-verge-node.github.io/uploads/20240912-1/bf61f00fae561de93cbfb0efba873c14.webp" />
+        <meta property="og:release_date" content="2025-02-02T09:27:43" />
+    <meta property="og:updated_time" content="2025-02-02T09:27:43" />
+        <meta property="og:description" content="一、概述 什么是ElasticSearch？ ElasticSearch，简称为ES， ES是一个开源的高扩展的分布式全文搜索引擎&nbsp;。 它可以近乎实时的存储、检索&nbsp;数据；本身扩展性" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ElasticSearch基础学习（SpringBoot集成ES）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                        <li class="nav-item"><a href="#" class="nav-link">关于</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">联系</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">ElasticSearch基础学习（SpringBoot集成ES）</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h3>一、概述</h3> <p>什么是ElasticSearch？</p> <p>ElasticSearch，简称为ES， ES是一个开源的高扩展的<strong>分布式全文搜索引擎</strong>&nbsp;。</p> <p>它可以近乎实时的<strong>存储、检索</strong>&nbsp;数据；本身扩展性很好，可以扩展到上百台服务器，处理<strong>PB级别</strong>&nbsp;的数据。</p> <p>ES也使用<strong>Java</strong>&nbsp;开发并使用<strong>Lucene</strong>&nbsp;作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的<code>RESTful API</code>&nbsp;来隐藏Lucene的复杂性，从而让全文搜索变得简单。</p> <p>ES核心概念</p> <p>知道了ES是什么后，接下来还需要知道ES是如何存储数据，数据结构是什么，又是如何实现搜索的呢？</p> <p>学习这些之前需要先了解一些ElasticSearch的相关概念。</p> <p>ElasticSearch是面向文档型数据库</p> <p>相信学习过MySql的同学都知道，MySql是关系型数据库，那么ES与关系型数据库有什么区别呢？</p> <p>下面做一下简单的对比：</p> <table> <thead> <tr> <th>关系型数据库(MySql、Oracle等)</th> <th>ElasticSearch</th> </tr> </thead> <tbody> <tr> <td>数据库(database)</td> <td>索引(indices)</td> </tr> <tr> <td>表(tables)</td> <td>类型(types)</td> </tr> <tr> <td>行(rows)</td> <td>文档(documents)</td> </tr> <tr> <td>列(columns)</td> <td>字段(fields)</td> </tr> </tbody> </table> <p>说明：ElasticSearch(集群)中可以包含多个索引(数据库)，每个索引中可以包含多个类型(表)，每个类型下又包含多 个文档(行)，每个文档中又包含多个字段(列)。</p> <p>物理设计：</p> <p>ElasticSearch 在后台把每个<strong>索引划分成多个分片</strong>&nbsp;，每份分片可以在集群中的不同服务器间迁移。</p> <p>逻辑设计：</p> <p>一个索引类型中，包含多个文档，比如说文档1，文档2，文档3。</p> <p>当我们索引一篇文档时，可以通过这样的一个顺序找到它:<code>索引 ▷ 类型 ▷ 文档ID</code>&nbsp;，通过这个组合我们就能索引到某个具体的文档。 注意:ID不必是整数，实际上它是个<strong>字符串</strong>&nbsp;。</p> <p>索引</p> <p>索引是映射类型的容器，elasticsearch中的索引是一个非常大的文档集合。索引存储了映射类型的字段和其他设置。 然后它们被存储到了各个分片上了。 我们来研究下分片是如何工作的。</p> <p>物理设计 ：节点和分片 如何工作</p> <p>一个集群至少有一个节点，而一个节点就是一个elasricsearch进程，节点可以有多个索引默认的，如果你创建索引，那么索引将会有个5个分片 ( primary shard ,又称主分片 ) 构成的，每一个主分片会有一个副本 ( replica shard ,又称复制分片 )</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220602/70b773682b7431e37c090b5d08a997c5.jpg"></p> <p>上图是一个有3个节点的集群，可以看到主分片和对应的复制分片都不会在同一个节点内，这样有利于某个节点挂掉 了，数据也不至于丢失。 实际上，一个分片是一个Lucene索引，一个包含<code>倒排索引</code>&nbsp;的文件目录，倒排索引的结构使得elasticsearch在不扫描全部文档的情况下，就能告诉你哪些文档包含特定的关键字。 其中，<code>倒排索引</code>&nbsp;又是什么呢？</p> <p>倒排索引</p> <p>elasticsearch使用的是一种称为<code>倒排索引</code>&nbsp;的结构，采用Lucene倒排索作为底层。这种结构适用于快速的全文搜索， 一个索引由文档中所有不重复的列表构成，对于每一个词，都有一个包含它的文档列表。 例如，现在有两个文档， 每个文档包含如下内容：</p> <pre>Study every day, good good up to forever # 文档1包含的内容 To forever, study every day, good good up # 文档2包含的内容</pre> <p>为了创建倒排索引，我们首先要将每个文档拆分成独立的词(或称为词条或者tokens)，然后创建一个包含所有不重复的词条的排序列表，然后列出每个词条出现在哪个文档 :</p> <table> <thead> <tr> <th>term</th> <th>doc_1</th> <th>doc_2</th> </tr> </thead> <tbody> <tr> <td>Study</td> <td>√</td> <td>x</td> </tr> <tr> <td>To</td> <td>x</td> <td>x</td> </tr> <tr> <td>every</td> <td>√</td> <td>√</td> </tr> <tr> <td>forever</td> <td>√</td> <td>√</td> </tr> <tr> <td>day</td> <td>√</td> <td>√</td> </tr> <tr> <td>study</td> <td>x</td> <td>√</td> </tr> <tr> <td>good</td> <td>√</td> <td>√</td> </tr> <tr> <td>every</td> <td>√</td> <td>√</td> </tr> <tr> <td>to</td> <td>√</td> <td>x</td> </tr> <tr> <td>up</td> <td>√</td> <td>√</td> </tr> </tbody> </table> <p>现在，我们试图搜索 to forever，只需要查看包含每个词条的文档</p> <table> <thead> <tr> <th>term</th> <th>doc_1</th> <th>doc_2</th> </tr> </thead> <tbody> <tr> <td>to</td> <td>√</td> <td>×</td> </tr> <tr> <td>forever</td> <td>√</td> <td>√</td> </tr> <tr> <td>total</td> <td>2</td> <td>1</td> </tr> </tbody> </table> <p>两个文档都匹配，但是第一个文档比第二个匹配程度更高。如果没有别的条件，现在，这两个包含关键字的文档都将返回。</p> <p>再来看一个示例，比如我们通过博客标签来搜索博客文章。那么倒排索引列表就是这样的一个结构 :</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220602/86fdaa4c21ce58c388b9a6a905bf6d0d.jpg"></p> <p>如果要搜索含有 python 标签的文章，那相对于查找所有原始数据而言，查找倒排索引后的数据将会快的多。只需要 查看标签这一栏，然后获取相关的文章ID即可。</p> <p>ElasticSearch的索引和Lucene的索引对比</p> <p>在elasticsearch中， 索引这个词被频繁使用，这就是术语的使用。 在elasticsearch中，索引被分为多个分片，每份分片是一个Lucene的索引。所以<strong>一个elasticsearch索引是由多个Lucene索引组成的</strong>&nbsp;。</p> <p>类型</p> <p>类型是文档的逻辑容器，就像关系型数据库一样，表格是行的容器。 类型中对于字段的定义称为映射，比如 name 映射为字符串类型。</p> <p>我们说文档是无模式的，它们不需要拥有映射中所定义的所有字段，比如新增一个字段，那么elasticsearch是怎么做的呢?elasticsearch会自动的将新字段加入映射，但是这个字段的不确定它是什么类型，elasticsearch就开始猜，如果这个值是18，那么elasticsearch会认为它是整形。 但是elasticsearch也可能猜不对， 所以最安全的方式就是提前定义好所需要的映射，这点跟关系型数据库殊途同归了，先定义好字段，然后再使用。</p> <p>文档</p> <p>之前说elasticsearch是面向文档的，那么就意味着索引和搜索数据的最小单位是文档。</p> <p>elasticsearch中，文档有几个重要属性 :</p> <ul> <li>自我包含，一篇文档<strong>同时包含字段和对应的值</strong>&nbsp;，也就是同时包含 key:value！</li> <li>可以是<strong>层次型</strong>&nbsp;的，一个文档中包含自文档，复杂的逻辑实体就是这么来的！</li> <li><strong>灵活的结构</strong>&nbsp;，文档不依赖预先定义的模式，我们知道关系型数据库中，要提前定义字段才能使用，在elasticsearch中，对于字段是非常灵活的，有时候，我们可以忽略该字段，或者动态的添加一个新的字段。</li> </ul> <p>尽管我们可以随意的新增或者忽略某个字段，但是，每个字段的类型非常重要，比如一个年龄字段类型，可以是字符串也可以是整形。因为elasticsearch会保存字段和类型之间的映射及其他的设置。这种映射具体到每个映射的每种类型，这也是为什么在elasticsearch中，类型有时候也称为映射类型。</p> <h3>二、ES基础操作</h3> <p>IK分词器插件</p> <p>什么是IK分词器？</p> <p>分词：即把一段中文或者别的划分成一个个的关键字，我们在搜索时候会把自己的信息进行分词，会把数据库中或者索引库中的数据进行分词，然后进行一个匹配操作。</p> <p>默认的中文分词是将每个字看成一个词，比如 “我爱学习” 会被分为"我","爱","学","习"，这显然是不符合要求的，所以我们需要安装中文分词器ik来解决这个问题。</p> <p>IK分词器安装步骤</p> <p>1、下载ik分词器的包，Github地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/medcl/elasticsearch-analysis-ik/"  title="https://github.com/medcl/elasticsearch-analysis-ik/" rel="nofollow">https://github.com/medcl/elasticsearch-analysis-ik/</a>&nbsp;（版本要对应）</p> <p>2、下载后解压，并将目录拷贝到ElasticSearch根目录下的 plugins 目录中。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220602/311e6bf64e8ff27e8fa645e037b59e97.jpg"></p> <p>3、重新启动 ElasticSearch 服务，在启动过程中，你可以看到正在加载"analysis-ik"插件的提示信息，服务启动后，在命令行运行<code>elasticsearch-plugin list</code>&nbsp;命令，确认 ik 插件安装成功。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220602/c91383ec018266b354e6435cd649b765.jpg"></p> <p>IK提供了两个分词算法：<code>ik_smart</code>&nbsp;和<code>ik_max_word</code>&nbsp;，其中<code>ik_smart</code>&nbsp;为最少切分，<code>ik_max_word</code>&nbsp;为最细粒度划分！</p> <pre>ik_max_word  ik_smart</pre> <p>如果某些词语，在默认的词库中不存在，比如我们想让“我爱学习”被识别是一个词，这时就需要我们编辑<strong>自定义词库</strong>&nbsp;。</p> <p>步骤：</p> <p>（1）进入elasticsearch/plugins/ik/config目录</p> <p>（2）新建一个my.dic文件，编辑内容：</p> <pre>我爱学习</pre> <p>（3）修改IKAnalyzer.cfg.xml（在ik/config目录下）</p> <pre>&lt;properties&gt; &lt;comment&gt;IK Analyzer 扩展配置&lt;/comment&gt; &lt;!-- 用户可以在这里配置自己的扩展字典 --&gt; &lt;entry key="ext_dict"&gt;my.dic&lt;/entry&gt; &lt;!-- 用户可以在这里配置自己的扩展停止词字典 --&gt; &lt;entry key="ext_stopwords"&gt;&lt;/entry&gt; &lt;/properties&gt;</pre> <p>注意：修改完配置后，需要重新启动elasticsearch。</p> <p>增删改查基本命令</p> <p>Rest风格说明</p> <p>一种软件架构风格，而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p> <p>基本Rest命令说明（增、删、改、查命令）：</p> <table> <thead> <tr> <th>method</th> <th>ur地址</th> <th>描述</th> </tr> </thead> <tbody> <tr> <td>PUT</td> <td>localhost：9200/索引名称/类型名称/文档id</td> <td>创建文档（指定文档id）</td> </tr> <tr> <td>POST</td> <td>localhost：9200/索引名称/类型名称</td> <td>创建文档（随机文档id）</td> </tr> <tr> <td>POST</td> <td>localhost：9200/索引名称/类型名称/文档id/_update</td> <td>修改文档</td> </tr> <tr> <td>DELETE</td> <td>localhost：9200/索名称/类型名称/文档id</td> <td>删除文档</td> </tr> <tr> <td>GET</td> <td>localhost：9200/索引名称/类型名称/文档id</td> <td>查询文档通过文档id</td> </tr> <tr> <td>POST</td> <td>localhost：9200/索引名称/类型名称/_search</td> <td>查询所有数据</td> </tr> </tbody> </table> <h3>三、SpringBoot集成ES</h3> <p>1、新建项目</p> <p>新建一个springboot（2.2.5版）项目 elasticsearch-demo ，导入web依赖即可。</p> <p>2、配置依赖</p> <p>配置elasticsearch的依赖：</p> <pre>&lt;properties&gt; &lt;java.version&gt;1.8&lt;/java.version&gt; &lt;!-- 这里SpringBoot默认配置的版本不匹配，我们需要自己配置版本！ --&gt; &lt;elasticsearch.version&gt;7.6.1&lt;/elasticsearch.version&gt; &lt;/properties&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-elasticsearch&lt;/artifactId&gt; &lt;/dependency&gt;</pre> <p>3、编写配置类</p> <p>编写elasticsearch的配置类，提供<code>RestHighLevelClient</code>&nbsp;这个bean来进行操作。</p> <pre>package com.hzx.config;  import org.apache.http.HttpHost; import org.elasticsearch.client.RestClient; import org.elasticsearch.client.RestHighLevelClient; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration;  @Configuration public class ElasticsearchClientConfig {      @Bean   public RestHighLevelClient restHighLevelClient() {     RestHighLevelClient client = new RestHighLevelClient(       RestClient.builder(new HttpHost("127.0.0.1", 9200, "http")));     return client;   }    }</pre> <p>4、配置工具类</p> <p>封装ES常用方法工具类</p> <pre>package com.hzx.utils;  import com.alibaba.fastjson.JSON; import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest; import org.elasticsearch.action.bulk.BulkRequest; import org.elasticsearch.action.bulk.BulkResponse; import org.elasticsearch.action.delete.DeleteRequest; import org.elasticsearch.action.delete.DeleteResponse; import org.elasticsearch.action.get.GetRequest; import org.elasticsearch.action.get.GetResponse; import org.elasticsearch.action.index.IndexRequest; import org.elasticsearch.action.index.IndexResponse; import org.elasticsearch.action.search.SearchRequest; import org.elasticsearch.action.search.SearchResponse; import org.elasticsearch.action.support.master.AcknowledgedResponse; import org.elasticsearch.action.update.UpdateRequest; import org.elasticsearch.action.update.UpdateResponse; import org.elasticsearch.client.RequestOptions; import org.elasticsearch.client.RestHighLevelClient; import org.elasticsearch.client.indices.CreateIndexRequest; import org.elasticsearch.client.indices.CreateIndexResponse; import org.elasticsearch.client.indices.GetIndexRequest; import org.elasticsearch.common.unit.TimeValue; import org.elasticsearch.common.xcontent.XContentType; import org.elasticsearch.index.query.QueryBuilders; import org.elasticsearch.rest.RestStatus; import org.elasticsearch.search.builder.SearchSourceBuilder; import org.elasticsearch.search.fetch.subphase.FetchSourceContext; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.beans.factory.annotation.Qualifier; import org.springframework.stereotype.Component;  import java.io.IOException; import java.util.List; import java.util.concurrent.TimeUnit;  @Component public class EsUtils&lt;T&gt; {     @Autowired     @Qualifier("restHighLevelClient")     private RestHighLevelClient client;      /**      * 判断索引是否存在      *      * @param index      * @return      * @throws IOException      */     public boolean existsIndex(String index) throws IOException {         GetIndexRequest request = new GetIndexRequest(index);         boolean exists = client.indices().exists(request, RequestOptions.DEFAULT);         return exists;     }      /**      * 创建索引      *      * @param index      * @throws IOException      */     public boolean createIndex(String index) throws IOException {         CreateIndexRequest request = new CreateIndexRequest(index);         CreateIndexResponse createIndexResponse = client.indices()                 .create(request, RequestOptions.DEFAULT);         return createIndexResponse.isAcknowledged();     }      /**      * 删除索引      *      * @param index      * @return      * @throws IOException      */     public boolean deleteIndex(String index) throws IOException {         DeleteIndexRequest deleteIndexRequest = new DeleteIndexRequest(index);         AcknowledgedResponse response = client.indices()                 .delete(deleteIndexRequest, RequestOptions.DEFAULT);         return response.isAcknowledged();     }      /**      * 判断某索引下文档id是否存在      *      * @param index      * @param id      * @return      * @throws IOException      */     public boolean docExists(String index, String id) throws IOException {         GetRequest getRequest = new GetRequest(index, id);         //只判断索引是否存在不需要获取_source         getRequest.fetchSourceContext(new FetchSourceContext(false));         getRequest.storedFields("_none_");         boolean exists = client.exists(getRequest, RequestOptions.DEFAULT);         return exists;     }      /**      * 添加文档记录      *      * @param index      * @param id      * @param t 要添加的数据实体类      * @return      * @throws IOException      */     public boolean addDoc(String index, String id, T t) throws IOException {         IndexRequest request = new IndexRequest(index);         request.id(id);         //timeout         request.timeout(TimeValue.timeValueSeconds(1));         request.timeout("1s");         request.source(JSON.toJSONString(t), XContentType.JSON);         IndexResponse indexResponse = client.index(request, RequestOptions.DEFAULT);         RestStatus Status = indexResponse.status();         return Status == RestStatus.OK || Status == RestStatus.CREATED;     }      /**      * 根据id来获取记录      *      * @param index      * @param id      * @return      * @throws IOException      */     public GetResponse getDoc(String index, String id) throws IOException {         GetRequest request = new GetRequest(index, id);         GetResponse getResponse = client.get(request,RequestOptions.DEFAULT);         return getResponse;     }      /**      * 批量添加文档记录      * 没有设置id ES会自动生成一个，如果要设置 IndexRequest的对象.id()即可      *      * @param index      * @param list      * @return      * @throws IOException      */     public boolean bulkAdd(String index, List&lt;T&gt; list) throws IOException {         BulkRequest bulkRequest = new BulkRequest();         //timeout         bulkRequest.timeout(TimeValue.timeValueMinutes(2));         bulkRequest.timeout("2m");         for (int i = 0; i &lt; list.size(); i++) {             bulkRequest.add(new IndexRequest(index).source(JSON.toJSONString(list.get(i))));         }         BulkResponse bulkResponse = client.bulk(bulkRequest,RequestOptions.DEFAULT);         return !bulkResponse.hasFailures();     }      /**      * 更新文档记录      * @param index      * @param id      * @param t      * @return      * @throws IOException      */     public boolean updateDoc(String index, String id, T t) throws IOException {         UpdateRequest request = new UpdateRequest(index, id);         request.doc(JSON.toJSONString(t));         request.timeout(TimeValue.timeValueSeconds(1));         request.timeout("1s");         UpdateResponse updateResponse = client.update(request, RequestOptions.DEFAULT);         return updateResponse.status() == RestStatus.OK;     }      /**      * 删除文档记录      *      * @param index      * @param id      * @return      * @throws IOException      */     public boolean deleteDoc(String index, String id) throws IOException {         DeleteRequest request = new DeleteRequest(index, id);         //timeout         request.timeout(TimeValue.timeValueSeconds(1));         request.timeout("1s");         DeleteResponse deleteResponse = client.delete(request, RequestOptions.DEFAULT);         return deleteResponse.status() == RestStatus.OK;     }      /**      * 根据某字段来搜索      *      * @param index      * @param field      * @param key   要收搜的关键字      * @throws IOException      */     public void search(String index, String field, String key, Integer             from, Integer size) throws IOException {         SearchRequest searchRequest = new SearchRequest(index);         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();         sourceBuilder.query(QueryBuilders.termQuery(field, key));         //控制搜素         sourceBuilder.from(from);         sourceBuilder.size(size);         //最大搜索时间。         sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));         searchRequest.source(sourceBuilder);         SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);         System.out.println(JSON.toJSONString(searchResponse.getHits()));     }  }</pre> <p>5、工具类API测试</p> <p>测试创建索引：</p> <pre>@Test void testCreateIndex() throws IOException {   CreateIndexRequest request = new CreateIndexRequest("test_index");   CreateIndexResponse createIndexResponse=restHighLevelClient.indices()     .create(request,RequestOptions.DEFAULT);   System.out.println(createIndexResponse); }</pre> <p>测试获取索引：</p> <pre>@Test void testExistsIndex() throws IOException {   GetIndexRequest request = new GetIndexRequest("test_index");   boolean exists = restHighLevelClient.indices()     .exists(request,RequestOptions.DEFAULT);   System.out.println(exists); }</pre> <p>测试删除索引：</p> <pre>@Test void testDeleteIndexRequest() throws IOException {   DeleteIndexRequest deleteIndexRequest = new   DeleteIndexRequest("test_index");   AcknowledgedResponse response = restHighLevelClient.indices()     .delete(deleteIndexRequest,   RequestOptions.DEFAULT);   System.out.println(response.isAcknowledged()); }</pre> <p>测试添加文档记录：</p> <p>创建一个实体类User</p> <pre>@Data @AllArgsConstructor @NoArgsConstructor @Component public class User {   private String name;   private int age; }</pre> <p>测试添加文档记录</p> <pre>@Test void testAddDocument() throws IOException {   // 创建对象   User user = new User("zhangsan", 3);   // 创建请求   IndexRequest request = new IndexRequest("test_index");   // 规则   request.id("1");   request.timeout(TimeValue.timeValueSeconds(1));   request.timeout("1s");   request.source(JSON.toJSONString(user), XContentType.JSON);   // 发送请求   IndexResponse indexResponse = restHighLevelClient.index(request,   RequestOptions.DEFAULT);   System.out.println(indexResponse.toString());   RestStatus Status = indexResponse.status();   System.out.println(Status == RestStatus.OK || Status ==   RestStatus.CREATED); }</pre> <p>测试：判断某索引下文档id是否存在</p> <pre>@Test void testIsExists() throws IOException {   GetRequest getRequest = new GetRequest("test_index","1");   // 不获取_source上下文 storedFields   getRequest.fetchSourceContext(new FetchSourceContext(false));   getRequest.storedFields("_none_");   // 判断此id是否存在！   boolean exists = restHighLevelClient.exists(getRequest,   RequestOptions.DEFAULT);   System.out.println(exists); }</pre> <p>测试：根据id获取文档记录</p> <pre>@Test void testGetDocument() throws IOException {   GetRequest getRequest = new GetRequest("test_index","3");   GetResponse getResponse = restHighLevelClient.get(getRequest,RequestOptions.DEFAULT);   // 打印文档内容   System.out.println(getResponse.getSourceAsString());    System.out.println(getResponse); }</pre> <p>测试：更新文档记录</p> <pre>@Test void testUpdateDocument() throws IOException {   UpdateRequest request = new UpdateRequest("test_index","1");   request.timeout(TimeValue.timeValueSeconds(1));   request.timeout("1s");   User user = new User("zhangsan", 18);   request.doc(JSON.toJSONString(user), XContentType.JSON);   UpdateResponse updateResponse = restHighLevelClient.update(request, RequestOptions.DEFAULT);   System.out.println(updateResponse.status() == RestStatus.OK); }</pre> <p>测试：删除文档记录</p> <pre>@Test void testDelete() throws IOException { DeleteRequest request = new DeleteRequest("test_index","3");   //timeout   request.timeout(TimeValue.timeValueSeconds(1));   request.timeout("1s");   DeleteResponse deleteResponse = restHighLevelClient.delete(   request, RequestOptions.DEFAULT);   System.out.println(deleteResponse.status() == RestStatus.OK); }</pre> <p>测试：批量添加文档</p> <pre>@Test void testBulkRequest() throws IOException {    	BulkRequest bulkRequest = new BulkRequest();   //timeout   bulkRequest.timeout(TimeValue.timeValueMinutes(2));   bulkRequest.timeout("2m");      ArrayList&lt;User&gt; userList = new ArrayList&lt;&gt;();   userList.add(new User("zhangsan1",3));   userList.add(new User("zhangsan2",3));   userList.add(new User("zhangsan3",3));   userList.add(new User("lisi1",3));   userList.add(new User("lisi2",3));   userList.add(new User("lisi3",3));      for (int i =0;i&lt;userList.size();i++){   	bulkRequest.add(new IndexRequest("test_index").id(""+(i+1))                     .source(JSON.toJSONString(userList.get(i)),XContentType.JSON));   }    // bulk   BulkResponse bulkResponse = restHighLevelClient.bulk(bulkRequest,RequestOptions.DEFAULT);   System.out.println(!bulkResponse.hasFailures()); }</pre> <p>查询测试：</p> <pre>/** * 使用QueryBuilder * termQuery("key", obj) 完全匹配 * termsQuery("key", obj1, obj2..) 一次匹配多个值 * matchQuery("key", Obj) 单个匹配, field不支持通配符, 前缀具高级特性 * multiMatchQuery("text", "field1", "field2"..); 匹配多个字段, field有通配符忒行 * matchAllQuery(); 匹配所有文件 */ @Test void testSearch() throws IOException {   SearchRequest searchRequest = new SearchRequest("test_index");   SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();   // TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name","zhangsan1");   MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();   sourceBuilder.query(matchAllQueryBuilder);   sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));   searchRequest.source(sourceBuilder);   SearchResponse response = restHighLevelClient.search(searchRequest,RequestOptions.DEFAULT);   System.out.println(JSON.toJSONString(response.getHits()));      System.out.println("================查询高亮显示==================");   for (SearchHit documentFields : response.getHits().getHits()) {   	System.out.println(documentFields.getSourceAsMap());   } }</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-49960.htm">FP-growth算法以及代码实现</a></p>
+                                        <p>下一个：<a href="/news/article-50478.htm">正则表达式 \b \B，单词边界的匹配</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-clash-verge-rev-node.htm" title="「12月15日」最高速度21M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月15日」最高速度21M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29895.htm" title="什么样的狗粮才是好狗粮（什么样的狗粮性价比高）">什么样的狗粮才是好狗粮（什么样的狗粮性价比高）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-clash-verge-rev-nodes.htm" title="「11月25日」最高速度21.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月25日」最高速度21.1M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-42992.htm" title="os模块，os.walk()方法解释与使用">os模块，os.walk()方法解释与使用</a></li>
+                        <li class="py-2"><a href="/news/article-25230.htm" title="免费领养宠物正规网站平台有哪些软件可以下载（领养宠物的软件平台）">免费领养宠物正规网站平台有哪些软件可以下载（领养宠物的软件平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-high-speed-nodes.htm" title="「1月6日」最高速度18.5M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月6日」最高速度18.5M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-clash-verge-rev-node.htm" title="「1月18日」最高速度22M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月18日」最高速度22M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-43494.htm" title="小孩被猫抓破了皮多久时间内安全（小孩被猫抓破点皮怎么办）">小孩被猫抓破了皮多久时间内安全（小孩被猫抓破点皮怎么办）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-clash-verge-rev-node.htm" title="「12月2日」最高速度21.3M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月2日」最高速度21.3M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-clash-verge-rev-node-share.htm" title="「11月24日」最高速度20.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月24日」最高速度20.6M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
