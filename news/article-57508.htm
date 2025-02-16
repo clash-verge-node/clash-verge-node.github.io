@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-57508.htm" />
+    <meta charset="utf-8">
+    <title>helm部署redis集群</title>
+        <meta name="description" content="helm部署redis集群 一： 配置： 		nfs存储：100G 		节点1：node1-iot.com 192.168.0.201 		节点2：node2-iot.com 192.168.0.20" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Verge Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-verge-node.github.io/news/article-57508.htm" />
+    <meta property="og:site_name" content="Clash Verge Node免费机场节点分享官网" />
+    <meta property="og:title" content="helm部署redis集群" />
+    <meta property="og:image" content="https://clash-verge-node.github.io/uploads/20240912-1/205939e4b920eb2c76c28d0fe1115900.webp" />
+        <meta property="og:release_date" content="2025-02-16T07:20:38" />
+    <meta property="og:updated_time" content="2025-02-16T07:20:38" />
+        <meta property="og:description" content="helm部署redis集群 一： 配置： 		nfs存储：100G 		节点1：node1-iot.com 192.168.0.201 		节点2：node2-iot.com 192.168.0.20" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="helm部署redis集群">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">helm部署redis集群</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <pre><code class="prism language-css">helm部署redis集群 一： 配置： 		nfs存储：100G 		节点1：node1-iot.com 192.168.0.201 		节点2：node2-iot.com 192.168.0.202 		节点3：node3-iot.com 192.168.0.204  二：部署storageclass [root@master-iot ~]# kubectl get nodes NAME             STATUS   ROLES    AGE   VERSION master-iot.com   Ready    master   37h   v1.17.0 node1-iot.com    Ready    &lt;none&gt;   37h   v1.17.0 node2-iot.com    Ready    &lt;none&gt;   37h   v1.17.0 node3-iot.com    Ready    &lt;none&gt;   24m   v1.17.0 [root@master-iot ~]# helm install stable/nfs-client-provisioner --set nfs.server=192.168.0.203 --set nfs.path=/opt 注意修改nfs地址和路径 [root@master-iot ~]# kubectl get pods NAME                                                   READY   STATUS    RESTARTS   AGE giggly-goose-nfs-client-provisioner-7b94d4dc4f-6dhw4   1/1     Running   0          53m  三：helm部署redis集群 [root@master-iot redis]# cat values.yaml<span class="token property">image</span><span class="token punctuation">:</span><span class="token property">repository</span><span class="token punctuation">:</span> redis<span class="token property">tag</span><span class="token punctuation">:</span> 5.0.5<span class="token property">pullPolicy</span><span class="token punctuation">:</span> IfNotPresent<span class="token property">redis</span><span class="token punctuation">:</span><span class="token property">resources</span><span class="token punctuation">:</span><span class="token property">requests</span><span class="token punctuation">:</span><span class="token property">memory</span><span class="token punctuation">:</span> 200Mi<span class="token property">cpu</span><span class="token punctuation">:</span> 100m<span class="token property">limits</span><span class="token punctuation">:</span><span class="token property">memory</span><span class="token punctuation">:</span> 700Mi<span class="token property">sentinel</span><span class="token punctuation">:</span><span class="token property">resources</span><span class="token punctuation">:</span><span class="token property">requests</span><span class="token punctuation">:</span><span class="token property">memory</span><span class="token punctuation">:</span> 200Mi<span class="token property">cpu</span><span class="token punctuation">:</span> 100m<span class="token property">limits</span><span class="token punctuation">:</span><span class="token property">memory</span><span class="token punctuation">:</span> 200Mi<span class="token property">persistentVolume</span><span class="token punctuation">:</span><span class="token property">enabled</span><span class="token punctuation">:</span> true<span class="token property">storageClass</span><span class="token punctuation">:</span><span class="token string">"nfs-client"</span><span class="token property">accessModes</span><span class="token punctuation">:</span>     - ReadWriteOnce<span class="token property">size</span><span class="token punctuation">:</span> 10Gi [root@master-iot redis]# helm install stable/redis-ha --name=redis-ha --namespace=redis [root@master-iot redis]# kubectl get all -n redis NAME                    READY   STATUS    RESTARTS   AGE pod/redis-ha-server-0   2/2     Running   3          24m pod/redis-ha-server-1   2/2     Running   0          24m pod/redis-ha-server-2   2/2     Running   0          24m  NAME                          TYPE        CLUSTER-IP      EXTERNAL-IP<span class="token function">PORT</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span>              AGE service/redis-ha              ClusterIP   None            &lt;none&gt;        6379/TCP,26379/TCP   24m service/redis-ha-announce-0   ClusterIP   10.96.177.155   &lt;none&gt;        6379/TCP,26379/TCP   24m service/redis-ha-announce-1   ClusterIP   10.96.255.63    &lt;none&gt;        6379/TCP,26379/TCP   24m service/redis-ha-announce-2   ClusterIP   10.96.166.228   &lt;none&gt;        6379/TCP,26379/TCP   24m  NAME                               READY   AGE statefulset.apps/redis-ha-server   3/3     24m  四：测试 [root@master-iot redis]# kubectl get svc -n redis NAME                  TYPE        CLUSTER-IP      EXTERNAL-IP<span class="token function">PORT</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span>              AGE redis-ha              ClusterIP   None            &lt;none&gt;        6379/TCP,26379/TCP   25m redis-ha-announce-0   ClusterIP   10.96.177.155   &lt;none&gt;        6379/TCP,26379/TCP   25m redis-ha-announce-1   ClusterIP   10.96.255.63    &lt;none&gt;        6379/TCP,26379/TCP   25m redis-ha-announce-2   ClusterIP   10.96.166.228   &lt;none&gt;        6379/TCP,26379/TCP   25m [root@master-iot redis]# redis-cli -h 10.96.166.228 -p 6379 10.96.166.228<span class="token punctuation">:</span>6379&gt; INFO replication # Replication<span class="token property">role</span><span class="token punctuation">:</span>master<span class="token property">connected_slaves</span><span class="token punctuation">:</span>2<span class="token property">min_slaves_good_slaves</span><span class="token punctuation">:</span>2<span class="token property">slave0</span><span class="token punctuation">:</span>ip=10.96.255.63,port=6379,state=online,offset=218033,lag=1<span class="token property">slave1</span><span class="token punctuation">:</span>ip=10.96.177.155,port=6379,state=online,offset=218174,lag=0<span class="token property">master_replid</span><span class="token punctuation">:</span>ebe58c1995af9ee29119744503a20a805aab28ae<span class="token property">master_replid2</span><span class="token punctuation">:</span>7ff4e6ea64e6f76766409679e6f6d18867dfa7f2<span class="token property">master_repl_offset</span><span class="token punctuation">:</span>218174<span class="token property">second_repl_offset</span><span class="token punctuation">:</span>26098<span class="token property">repl_backlog_active</span><span class="token punctuation">:</span>1<span class="token property">repl_backlog_size</span><span class="token punctuation">:</span>1048576<span class="token property">repl_backlog_first_byte_offset</span><span class="token punctuation">:</span>868<span class="token property">repl_backlog_histlen</span><span class="token punctuation">:</span>217307 10.96.166.228<span class="token punctuation">:</span>6379&gt; set foo1 bar1 OK 10.96.166.228<span class="token punctuation">:</span>6379&gt; set foo2 bar2 OK [root@master-iot redis]# redis-cli -h 10.96.255.63  -p 6379 10.96.255.63<span class="token punctuation">:</span>6379&gt; KEYS * 1<span class="token punctuation">)</span><span class="token string">"foo1"</span> 2<span class="token punctuation">)</span><span class="token string">"foo2"</span> 接下来删除一个pod看是否重建 [root@master-iot redis]# kubectl get pods -n redis NAME                READY   STATUS    RESTARTS   AGE redis-ha-server-0   2/2     Running   3          32m redis-ha-server-1   2/2     Running   0          32m redis-ha-server-2   2/2     Running   0          32m [root@master-iot redis]# kubectl delete pod redis-ha-server-0 -n redis pod<span class="token string">"redis-ha-server-0"</span> deleted [root@master-iot redis]# kubectl get pods -n redis NAME                READY   STATUS    RESTARTS   AGE redis-ha-server-0   2/2     Running   0          18s redis-ha-server-1   2/2     Running   0          33m redis-ha-server-2   2/2     Running   0          33m 重建完毕 [root@master-iot redis]# redis-cli -h 10.96.177.155 -p 6379 10.96.177.155<span class="token punctuation">:</span>6379&gt; KEYS * 1<span class="token punctuation">)</span><span class="token string">"foo1"</span> 2<span class="token punctuation">)</span><span class="token string">"foo2"</span> 数据保持一致</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-56946.htm">中国最大的宠物粮生产厂家 中国最大的宠物粮生产厂家在哪里</a></p>
+                                        <p>下一个：<a href="/news/article-57509.htm">动物医院管理流程图片大全（动物医院规章制度范本）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23825.htm" title="宠物领养协议文案怎么写啊 宠物领养协议文案怎么写啊图片">宠物领养协议文案怎么写啊 宠物领养协议文案怎么写啊图片</a></li>
+                        <li class="py-2"><a href="/news/article-31247.htm" title="猫三联每针需要间隔多久打（猫三联一共几针分几次打完?）">猫三联每针需要间隔多久打（猫三联一共几针分几次打完?）</a></li>
+                        <li class="py-2"><a href="/news/article-44480.htm" title="宠物用疫苗可以带上高铁吗北京地区（宠物疫苗能上地铁吗）">宠物用疫苗可以带上高铁吗北京地区（宠物疫苗能上地铁吗）</a></li>
+                        <li class="py-2"><a href="/news/article-30854.htm" title="vue动态控制样式">vue动态控制样式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-clash-verge-rev-node.htm" title="「12月13日」最高速度21M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月13日」最高速度21M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-clash-verge-rev-github.htm" title="「2月3日」最高速度18M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「2月3日」最高速度18M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-56403.htm" title="南京领养宠物的地方（南京哪里领养宠物）">南京领养宠物的地方（南京哪里领养宠物）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-clash-verge-rev-node-share.htm" title="「11月14日」最高速度20.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「11月14日」最高速度20.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-node-share.htm" title="「2月4日」最高速度22.2M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「2月4日」最高速度22.2M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-55830.htm" title="Linux图形化界面ip,Linux系统下图形界面更改IP地址">Linux图形化界面ip,Linux系统下图形界面更改IP地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
