@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-63945.htm" />
+    <meta charset="utf-8">
+    <title>【Golang实战】反射设置结构体字段值</title>
+        <meta name="description" content="这个测试用例，是在上一篇通过反射自定义排序字段的基础上做的补充，因为在业务代码中涉及到slice排序完之后，给最小元素的字段赋值场景。 type Str struct { 	A string 	V i" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Verge Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-verge-node.github.io/news/article-63945.htm" />
+    <meta property="og:site_name" content="Clash Verge Node免费机场节点分享官网" />
+    <meta property="og:title" content="【Golang实战】反射设置结构体字段值" />
+    <meta property="og:image" content="https://clash-verge-node.github.io/uploads/20240912-1/d25f5bb46cd22a92d23ea2f76be051c7.webp" />
+        <meta property="og:release_date" content="2025-02-27T05:56:28" />
+    <meta property="og:updated_time" content="2025-02-27T05:56:28" />
+        <meta property="og:description" content="这个测试用例，是在上一篇通过反射自定义排序字段的基础上做的补充，因为在业务代码中涉及到slice排序完之后，给最小元素的字段赋值场景。 type Str struct { 	A string 	V i" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【Golang实战】反射设置结构体字段值">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">【Golang实战】反射设置结构体字段值</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night-eighties"> <p>这个测试用例，是在上一篇通过反射自定义排序字段的基础上做的补充，因为在业务代码中涉及到slice排序完之后，给最小元素的字段赋值场景。</p> <pre><code class="prism language-golang">type Str struct { 	A string 	V int } func TestReflectMapSet(t *testing.T) { 	var ddd = map[int]*Str{ 		2:  {A: "test A", V: 2}, 		1:  {A: "test b", V: 1}, 		-1: {A: "test c", V: -1}, 	} 	tmpData := ddd[1]     // tmpData 一定是指针类型的 	reflect.ValueOf(tmpData).Elem().FieldByName("V").SetInt(22) 	ddd[1] = tmpData 	for _, d := range ddd { 		t.Log(d) 	} } </code></pre> <p>输出：</p> <pre><code class="prism language-sh">=== RUN   TestReflectMapSet     TestReflectMapSet: http_test.go:183: &amp;{test A 2}     TestReflectMapSet: http_test.go:183: &amp;{test b 22}     TestReflectMapSet: http_test.go:183: &amp;{test c -1} --- PASS: TestReflectMapSet (0.00s) PASS </code></pre> <p>以下是结合了通过反射自定义字段排序，以及给指定字段赋值的业务代码</p> <pre><code class="prism language-golang">type DividedDecInfo struct { 	SkuId        uint64 	CouponAmount int }  func TestReflectSort(t *testing.T) { 	var data = map[uint64]*DividedDecInfo{ 		12: {SkuId: 12, CouponAmount: 3}, 		13: {SkuId: 13, CouponAmount: 4}, 		34: {SkuId: 34, CouponAmount: 5}, 	} 	sortByType2(data, 13, "CouponAmount") 	for _, d := range data { 		t.Log(d) 	} }  func sortByType2(data map[uint64]*DividedDecInfo, amount int, amountObj string) { 	var ( 		tmpDdi         []*DividedDecInfo 		num, tmpAmount int 	) 	for _, ddi := range data { 		tmpDdi = append(tmpDdi, ddi) 	} 	num = len(tmpDdi) 	if num &gt;= 2 { 		// 反射排序 		sort.Slice(tmpDdi, func(i, j int) bool { 			tmp := reflect.ValueOf(tmpDdi) 			return tmp.Index(i).Elem().FieldByName(amountObj).Int() &gt; tmp.Index(j).Elem().FieldByName(amountObj).Int() 		}) 		refTmp := reflect.ValueOf(tmpDdi) 		for i := 0; i &lt;= num-2; i++ { 			log.Println(tmpDdi[i]) 			// 反射取值 			tmpAmount += int(refTmp.Index(i).Elem().FieldByName(amountObj).Int()) 		} 		// 反射赋值 		tmpData := data[tmpDdi[num-1].SkuId] 		reflect.ValueOf(tmpData).Elem().FieldByName(amountObj).SetInt(int64(amount - tmpAmount)) 	} } </code></pre> <p>输出：</p> <pre><code class="prism language-sh">=== RUN   TestReflectSort 2021/02/14 22:38:30 &amp;{34 5} 2021/02/14 22:38:30 &amp;{13 4}     TestReflectSort: http_test.go:215: &amp;{12 4}     TestReflectSort: http_test.go:215: &amp;{13 4}     TestReflectSort: http_test.go:215: &amp;{34 5} --- PASS: TestReflectSort (0.02s) PASS </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-63341.htm">宠物领养小程序的设计与实现（宠物领养网站html模板）</a></p>
+                                        <p>下一个：<a href="/news/article-63948.htm">河南省兽药前十名企业（河南兽药50强企业名单）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-52571.htm" title="宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）">宠物店一般卖几个月的狗比较好（宠物店一般卖多大的狗）</a></li>
+                        <li class="py-2"><a href="/news/article-40502.htm" title="VUE3.0使用ElementPlus开发登录界面">VUE3.0使用ElementPlus开发登录界面</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-free-subscribe-node.htm" title="「2月20日」最高速度19.9M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「2月20日」最高速度19.9M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-clash-verge-rev-node-share.htm" title="「12月20日」最高速度18.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月20日」最高速度18.8M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-46934.htm" title="成都宠物领养平台微博号码是多少（成都宠物领养微信公众号）">成都宠物领养平台微博号码是多少（成都宠物领养微信公众号）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-free-high-speed-nodes.htm" title="「12月27日」最高速度20.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接">「12月27日」最高速度20.2M/S，2024年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36228.htm" title="为什么猫不打疫苗不能绝育呢视频（家猫为什么不打疫苗）">为什么猫不打疫苗不能绝育呢视频（家猫为什么不打疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-28947.htm" title="哪里产的红宝石最好(哪里产的红宝石最好看)">哪里产的红宝石最好(哪里产的红宝石最好看)</a></li>
+                        <li class="py-2"><a href="/news/article-31788.htm" title="C# 11 对 ref 和 struct 的改进">C# 11 对 ref 和 struct 的改进</a></li>
+                        <li class="py-2"><a href="/news/article-43986.htm" title="vuex几大模块和Vuex助手使用详解">vuex几大模块和Vuex助手使用详解</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
