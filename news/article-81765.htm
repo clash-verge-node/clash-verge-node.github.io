@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-81765.htm" />
+    <meta charset="utf-8">
+    <title>分布式之一行代码解决缓存击穿问题</title>
+        <meta name="description" content="引言 今天，重新回顾一下缓存击穿这个问题！ 之所以写这个文章呢，因为目前网上流传的文章落地性太差(什么布隆过滤器啊，布谷过滤器啊，嗯，你们懂的)，其实这类方案并不适合在项目中直接落地。 那么，我们在项" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Verge Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-verge-node.github.io/news/article-81765.htm" />
+    <meta property="og:site_name" content="Clash Verge Node免费机场节点分享官网" />
+    <meta property="og:title" content="分布式之一行代码解决缓存击穿问题" />
+    <meta property="og:image" content="https://clash-verge-node.github.io/uploads/20240912-1/b44aafd4039485574e3c46b07e21b95f.webp" />
+        <meta property="og:release_date" content="2025-03-26T08:56:20" />
+    <meta property="og:updated_time" content="2025-03-26T08:56:20" />
+        <meta property="og:description" content="引言 今天，重新回顾一下缓存击穿这个问题！ 之所以写这个文章呢，因为目前网上流传的文章落地性太差(什么布隆过滤器啊，布谷过滤器啊，嗯，你们懂的)，其实这类方案并不适合在项目中直接落地。 那么，我们在项" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="分布式之一行代码解决缓存击穿问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">分布式之一行代码解决缓存击穿问题</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2 id="引言">引言</h2> <p>今天，重新回顾一下缓存击穿这个问题！<br /> 之所以写这个文章呢，因为目前网上流传的文章落地性太差(什么布隆过滤器啊，布谷过滤器啊，嗯，你们懂的)，其实这类方案并不适合在项目中直接落地。</p> <p>那么，我们在项目中落地代码的时候，其实只需要一个注解就能解决这些问题，并不需要搞的那么复杂。</p> <p>本文有一个前提，读者必须是java栈，且是用Springboot构建自己的项目，如果是go技术栈或者python技术栈的，可能介绍的思路仅供大家参考！</p> <h2 id="正文">正文</h2> <h3 id="目前缺陷">目前缺陷</h3> <p>首先，为什么说目前网上流传的方案，落地性差呢，因为都缺乏一个可以和SpringBoot结合起来的真实场景，基本上都脱离了SpringBoot，只站在Java这个层级去分析。那问题就来了，现在还有只用SpringMvc，却不用SpringBoot的公司么?因此，本文尝试将该方案和SpringBoot结合起来，讲一个确实可行，可以落地的方案！</p> <p>当然，我们先来说说目前在网上流传的几套方案，到底不靠谱在哪里！</p> <p><em>(1)布隆过滤器</em></p> <p>关于布隆过滤器，我就不介绍太多，这里就理解为是一个过滤器,用于快速检索一个元素是否在一个集合中；那么当一个请求来的时候，快速判断这个请求的key是否在指定集合中！如果在，说明有效，则放行。如果不在，则无效拦截。<br /> 至于实现，各大博客也说了用了google提供的</p> <pre><code>&lt;dependency&gt;     &lt;groupId&gt;com.google.guava&lt;/groupId&gt;     &lt;artifactId&gt;guava&lt;/artifactId&gt;     &lt;version&gt;19.0&lt;/version&gt; &lt;/dependency&gt;</code></pre> <p>这个包里有现成写好的java类给你使用了，当然demo代码我就不贴了，一抓一大把！<br /> 当然，似乎看上去完美无暇！一切都是那么的合适！</p> <p>然而到这里，我就真的问一句，<strong>你们真的用了这个方案了？</strong></p> <p>我如果猜的没错，应该没几个人遇到过缓存击穿问题~</p> <p>更何况，证明这个说法的正确性~</p> <p>该方案最大的一个问题是<strong>布隆过滤器不支持反向删除操作</strong>，例如你的项目里活跃的key的数量只有1000w个，但是全部key数量有5000w个，那这5000w个key会全部存在布隆过滤器里！</p> <p>直到某一天，你会发现这个过滤器太拥挤了，误判率太高，不得不进行重建！</p> <p>so，你们觉得这个做法真的靠谱？</p> <p>那么布隆过滤器这个说法出自哪里呢？<br /> (大家一定很好奇对不对！)</p> <p>当然是xx机构～～此处保护自己的狗头～～记住，他们为了割韭菜，一定会选择一些看起来极为高端，但是落地巨不靠谱的方案（这也是区分一个机构到底是割韭菜还是真正有水平的标杆，小白不懂，很容易被坑）～～看到这里，真是惭愧，我的第一篇文章也是写这个方案了，但是在落地过程中，发现了不对劲（此处省略一万字的检讨文，烟哥垃圾～～）。</p> <p><em>(2)布谷过滤器</em></p> <p>那么，为了解决布隆过滤器查询性能弱、空间利用效率低、不支持反向操作等问题，又有一篇文章诞生了，主张用布谷过滤器来解决缓存击穿问题！</p> <p>但是，神奇的事情来了，基本上所有的文章都在说布谷过滤器多么多么牛逼，却没有任何落地的方案~</p> <p>记住，我们平时写代码，一定是怎么方便怎么来！<strong>再记住，面试是一回事，代码落地是另一回事~</strong></p> <p>那，真正简便的方案是什么样的呢？来，我们一步步来~</p> <h3 id="真正方案">真正方案</h3> <p>假设，你此刻用的是springboot-2.x的版本，你为了能够连接redis，你在pom文件里加入如下依赖</p> <pre><code>&lt;dependency&gt;     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;     &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt; &lt;/dependency&gt;</code></pre> <p>然后呢，我们修改application.yml</p> <pre><code>spring:   datasource:     ...   redis:     database: ...     host: ...     port: ... (省事，不全贴了)</code></pre> <p>ok，说到这里，就不得不说一下spring-cache了，Spring3.1之后，引入了注解缓存技术，其本质上不是一个具体的缓存实现方案，而是一个对缓存使用的抽象，通过在既有代码中添加少量自定义的各种annotation，即能够达到使用缓存对象和缓存方法的返回对象的效果。Spring的缓存技术具备相当的灵活性，不仅能够使用SpEL（Spring Expression Language）来定义缓存的key和各种condition，还提供开箱即用的缓存临时存储方案，也支持和主流的专业缓存集成。</p> <p>例如：我们在代码中经常有这么一段逻辑，在目标方法执行前，会根据key先去缓存中查询看是否有数据，有就直接返回缓存中的key对应的value值，不再执行目标方法；没有则执行目标方法，去数据库查询出对应的value，并以键值对的形式存入缓存。</p> <p>如果我们不使用例如spring-cache的注解框架，你的代码中会充斥着大量冗余代码，而用了该框架后，以@Cacheable注解为例， 该注解在方法上，表示该方法的返回结果是可以缓存的。</p> <p>也就是说，该方法的返回结果会放在缓存中，以便于以后使用相同的参数调用该方法时，会返回缓存中的值，而不会实际执行该方法。</p> <p>那么，你的代码只需要这么写</p> <pre><code>@Override @Cacheable("menu") public Menu findById(String id) {     Menu menu = this.getById(id);     if (menu != null){         System.out.println("menu.name = " + menu.getName());     }     return menu; }</code></pre> <p>在这个例子中，findById 方法与一个名为 menu 的缓存关联起来了。调用该方法时，会检查 menu 缓存，如果缓存中有结果，就不会去执行方法了。</p> <p>ok，说到这里，其实都是大家懂得东西！！接下来开始我们的主题：如何解决缓存击穿问题！顺便讲讲穿透和雪崩问题！</p> <p>来来来，我们回忆一下缓存击穿，穿透以及缓存雪崩的概念！</p> <h3 id="缓存穿透">缓存穿透</h3> <p>在高并发下，查询一个不存在的值时，缓存不会被命中，导致大量请求直接落到数据库上，如活动系统里面查询一个不存在的活动。<br /><strong>多嘴一句:缓存穿透是指,请求的是缓存和数据库中都没有的数据！</strong></p> <p>对于缓存穿透问题，有一个很简单的解决方案，就是缓存NULL值~从缓存取不到的数据，在数据库中也没有取到，直接返回空值。</p> <p>那么spring-cache中，有一个配置是这样的</p> <pre><code>spring.cache.redis.cache-null-values=true</code></pre> <p>带上该配置后，就可以缓存null值了，值得一提的是，这个缓存时间要设的少一点，例如15秒就够，如果设置过长，会导致正常的缓存也无法使用。</p> <h3 id="缓存击穿">缓存击穿</h3> <p>在高并发下，对一个特定的值进行查询，但是这个时候缓存正好过期了，缓存没有命中，导致大量请求直接落到数据库上，如活动系统里面查询活动信息，但是在活动进行过程中活动缓存突然过期了。<br /><strong>多嘴一句:缓存击穿是指,请求的是缓存没有，而数据库中有的数据！</strong></p> <p>记住，解决击穿的最简单的方法，只有一个，就是限流！至于怎么限，其实可以各显神通！例如其他文章提到的布隆过滤器，布谷过滤器等，不过是限流方式之一而已！甚至，你用一些其他的限流组件也是可以的！</p> <p>这里就要说spring-cahce的另一个配置了！</p> <p>在缓存过期之后，如果多个线程同时请求对某个数据的访问，会同时去到数据库，导致数据库瞬间负荷增高。Spring4.3为@Cacheable注解提供了一个新的参数“sync”（boolean类型，缺省为false），当设置它为true时，只有一个线程的请求会去到数据库，其他线程都会等待直到缓存可用。这个设置可以减少对数据库的瞬间并发访问。</p> <p>看到这里！！这不就是一个限流方案么？</p> <p>所以解决方法就是，加一个属性sync=true，就行。代码就像下面这样</p> <pre><code>@Cacheable(cacheNames="menu", sync="true")</code></pre> <p>用了该属性后，可以指示底层将缓存锁住，使只有一个线程可以进入计算，而其他线程堵塞，直到返回结果更新到缓存中。</p> <p>当然，看到这里，一定会有人和我抬杠！他的问题是这样的！</p> <p>你这个只是针对单机的限流，并不是整体集群的限流！也就是说，假设你的集群搭建了3000个pod，最差的情况下就是，3000个pod上，每个pod都会发起一个请求去数据库查询，照样还是会导致数据库连接数不够用，等等资源问题！</p> <p>对于这个问题我只能说！少年，但凡你的公司产品达到这种流量规模，此刻你就不会在看我的文章！你此刻关心的问题是：</p> <pre><code>(1)哎，买深圳湾一号还是深圳湾公馆呢，纠结！ (2)昨天美股又跌了，又损失了两套房 (3)昨天提前撤单了，又少挣了几万 ....(省略一万字)</code></pre> <p>当然，如果你非要解决，也有办法。spring的aop有套路的，比如@Transactional的Advice是TransactionInterceptor，那么cache也对应对一个CacheInterceptor，我们只要去改CacheInterceptor，这个切面就能解决。在里头做一个分布式锁！伪代码如下</p> <pre><code>flag := 取分布式锁 if flag {     走数据库查询，并缓存结果 }{     睡眠一段时间，再次尝试获取key的值 }</code></pre> <p>但是，我还是要多嘴提一句，真没必要~~<br /> 记住一句话，立足实际出发~但凡你的业务到了那种级别，是可以做到区域部署的，完全可以规避开这类问题。</p> <h3 id="缓存雪崩">缓存雪崩</h3> <p>在高并发下，大量的缓存key在同一时间失效，导致大量的请求落到数据库上，如活动系统里面同时进行着非常多的活动，但是在某个时间点所有的活动缓存全部过期。</p> <p>那么针对该问题，最简单的解决方法就是，过期时间加随机值！</p> <p>但是很麻烦的是，我们在使用@Cacheable注解的时候，原生功能没法直接设置随机过期时间的。</p> <p>这个老实说，真没啥好方法，只能自己继承<code>RedisCache</code>，对其增强，改写其中的put方法，带上随机时间！</p> <p>(本文不赘述，自己可以去查阅相关博客，我真的不喜欢写文章贴大量代码，可读性太差了，知道这么个思路就行，出门搜索一下，一堆答案！)</p> <h2 id="文末">文末</h2> <p>自此，缓存击穿，穿透，雪崩问题都得到圆满解决~~</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-81764.htm">哪种HTML5标签更适合表示金额</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-60394.htm" title="动物防疫工作部署方案（动物防疫工作安排）">动物防疫工作部署方案（动物防疫工作安排）</a></li>
+                        <li class="py-2"><a href="/news/article-62742.htm" title="南京哪里有领养宠物的地方 南京哪里有领养宠物的地方啊">南京哪里有领养宠物的地方 南京哪里有领养宠物的地方啊</a></li>
+                        <li class="py-2"><a href="/news/article-73579.htm" title="React系列五——event事件">React系列五——event事件</a></li>
+                        <li class="py-2"><a href="/news/article-79687.htm" title="想念动物医院电话（动物医院大众点评）">想念动物医院电话（动物医院大众点评）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-today-clash-verge-rev-node.htm" title="「1月12日」最高速度20.3M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月12日」最高速度20.3M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-77641.htm" title="猫粮品牌大全推荐（猫粮品牌排行推荐）">猫粮品牌大全推荐（猫粮品牌排行推荐）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-14-today-clash-verge-rev-node.htm" title="「1月14日」最高速度18.4M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「1月14日」最高速度18.4M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-51520.htm" title="在Datatable，DataView和DataGridView中不显示重复的记录">在Datatable，DataView和DataGridView中不显示重复的记录</a></li>
+                        <li class="py-2"><a href="/news/article-36227.htm" title="宠物免费领养中心软件（宠物免费领养平台下载）">宠物免费领养中心软件（宠物免费领养平台下载）</a></li>
+                        <li class="py-2"><a href="/news/article-67071.htm" title="合肥宠物领养贴吧（合肥宠物领养微信群）">合肥宠物领养贴吧（合肥宠物领养微信群）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">78</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
