@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-86752.htm" />
+    <meta charset="utf-8">
+    <title>springboot项目在启动时自动添加定时任务</title>
+        <meta name="description" content="springboot项目在启动时自动添加定时任务    1、springboot项目的启动器类添加注解 2、动态添加定时任务   2-1、添加配置类   3、静态添加定时任务 4、cron表达式在线生" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Verge Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-verge-node.github.io/news/article-86752.htm" />
+    <meta property="og:site_name" content="Clash Verge Node免费机场节点分享官网" />
+    <meta property="og:title" content="springboot项目在启动时自动添加定时任务" />
+    <meta property="og:image" content="https://clash-verge-node.github.io/uploads/20240912-1/4edec036782de0d2231362ca245dc4a3.webp" />
+        <meta property="og:release_date" content="2025-04-02T07:44:22" />
+    <meta property="og:updated_time" content="2025-04-02T07:44:22" />
+        <meta property="og:description" content="springboot项目在启动时自动添加定时任务    1、springboot项目的启动器类添加注解 2、动态添加定时任务   2-1、添加配置类   3、静态添加定时任务 4、cron表达式在线生" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springboot项目在启动时自动添加定时任务">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">springboot项目在启动时自动添加定时任务</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>springboot项目在启动时自动添加定时任务</h3> <ul> <li> <ul> <li><a href="#1springboot_1" rel="nofollow">1、springboot项目的启动器类添加注解</a></li> <li><a href="#2_6" rel="nofollow">2、动态添加定时任务</a></li> <li> <ul> <li><a href="#21_8" rel="nofollow">2-1、添加配置类</a></li> </ul> </li> <li><a href="#3_67" rel="nofollow">3、静态添加定时任务</a></li> <li><a href="#4cron_76" rel="nofollow">4、cron表达式在线生成</a></li> <li><a href="#5cron_78" rel="nofollow">5、如果不用cron表达式，可以直接使用毫秒</a></li> </ul> </li> </ul> </div> <h2> <a id="1springboot_1" rel="nofollow"></a>1、springboot项目的启动器类添加注解</h2> <pre><code class="prism language-java"><span class="token annotation punctuation">@EnableScheduling</span> </code></pre> <h2> <a id="2_6" rel="nofollow"></a>2、动态添加定时任务</h2> <p><strong>需求：启动项目时自动添加定时任务，定时时间从数据库查</strong></p> <h3> <a id="21_8" rel="nofollow"></a>2-1、添加配置类</h3> <p>新建config包，包下新建<code>ScheduleTask</code>类实现<code>SchedulingConfigurer</code>接口，代码如下：</p> <pre><code class="prism language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>springxxx<span class="token punctuation">.</span>modules<span class="token punctuation">.</span>xxx<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>  <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span><span class="token punctuation">;</span>  <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springblade<span class="token punctuation">.</span>modules<span class="token punctuation">.</span>datatrans<span class="token punctuation">.</span>entity<span class="token punctuation">.</span></span><span class="token class-name">DataResource</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springblade<span class="token punctuation">.</span>modules<span class="token punctuation">.</span>datatrans<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span></span><span class="token class-name">DataResourceMapper</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springblade<span class="token punctuation">.</span>modules<span class="token punctuation">.</span>datatrans<span class="token punctuation">.</span>service<span class="token punctuation">.</span></span><span class="token class-name">IDataResourceService</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springblade<span class="token punctuation">.</span>modules<span class="token punctuation">.</span>datatrans<span class="token punctuation">.</span>utils<span class="token punctuation">.</span></span><span class="token class-name">CronExpParser</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>scheduling<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">EnableScheduling</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>scheduling<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">SchedulingConfigurer</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>scheduling<span class="token punctuation">.</span>config<span class="token punctuation">.</span></span><span class="token class-name">ScheduledTaskRegistrar</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>scheduling<span class="token punctuation">.</span>support<span class="token punctuation">.</span></span><span class="token class-name">CronTrigger</span><span class="token punctuation">;</span>  <span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>aliyuncs<span class="token punctuation">.</span>utils<span class="token punctuation">.</span></span><span class="token class-name">StringUtils</span><span class="token punctuation">;</span> <span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>core<span class="token punctuation">.</span>conditions<span class="token punctuation">.</span>query<span class="token punctuation">.</span></span><span class="token class-name">QueryWrapper</span><span class="token punctuation">;</span>  <span class="token annotation punctuation">@Configuration</span> <span class="token comment">// 1.主要用于标记配置类，兼备Component的效果。</span> <span class="token annotation punctuation">@EnableScheduling</span> <span class="token comment">// 2.开启定时任务</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ScheduleTask</span> <span class="token keyword">implements</span> <span class="token class-name">SchedulingConfigurer</span> <span class="token punctuation">{<!-- --></span>  	<span class="token annotation punctuation">@Autowired</span> 	<span class="token class-name">DataResourceMapper</span> dataResourceMapper<span class="token punctuation">;</span>  	<span class="token annotation punctuation">@Autowired</span> 	<span class="token class-name">IDataResourceService</span> dataResourceService<span class="token punctuation">;</span>  	<span class="token annotation punctuation">@Override</span> 	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureTasks</span><span class="token punctuation">(</span><span class="token class-name">ScheduledTaskRegistrar</span> taskRegistrar<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 		<span class="token class-name">QueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DataResource</span><span class="token punctuation">&gt;</span></span> drWrapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">QueryWrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DataResource</span><span class="token punctuation">&gt;</span></span> dataResourceList <span class="token operator">=</span> dataResourceMapper<span class="token punctuation">.</span><span class="token function">selectList</span><span class="token punctuation">(</span>drWrapper<span class="token punctuation">.</span><span class="token function">eq</span><span class="token punctuation">(</span><span class="token string">"deleted"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">DataResource</span> dataResource <span class="token operator">:</span> dataResourceList<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 			<span class="token comment">// 2.1 从数据库获取执行周期</span> 			<span class="token class-name">String</span> cron <span class="token operator">=</span> dataResource<span class="token punctuation">.</span><span class="token function">getExecuteCron</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 			<span class="token comment">// 2.2 合法性校验. 正确的cron表达式+数据资源可访问状态为正常</span> 			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">StringUtils</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>cron<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> dataResource<span class="token punctuation">.</span><span class="token function">getAccessibleState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 				<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"添加动态定时任务: "</span> <span class="token operator">+</span> dataResource<span class="token punctuation">.</span><span class="token function">getDataName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">","</span> 						<span class="token operator">+</span> <span class="token class-name">CronExpParser</span><span class="token punctuation">.</span><span class="token function">translateToChinese</span><span class="token punctuation">(</span>cron<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"执行一次"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 				taskRegistrar<span class="token punctuation">.</span><span class="token function">addTriggerTask</span><span class="token punctuation">(</span> 						<span class="token comment">// 1.添加任务内容(Runnable)</span> 						<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{<!-- --></span> 							<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"执行动态定时任务: "</span> <span class="token operator">+</span> dataResource<span class="token punctuation">.</span><span class="token function">getDataName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 							dataResourceService<span class="token punctuation">.</span><span class="token function">refreshByTime</span><span class="token punctuation">(</span>dataResource<span class="token punctuation">)</span><span class="token punctuation">;</span> 						<span class="token punctuation">}</span><span class="token punctuation">,</span> 						<span class="token comment">// 2.设置执行周期(Trigger)</span> 						triggerContext <span class="token operator">-&gt;</span> <span class="token punctuation">{<!-- --></span> 							<span class="token comment">// 2.3 返回执行周期(Date)</span> 							<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">CronTrigger</span><span class="token punctuation">(</span>cron<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextExecutionTime</span><span class="token punctuation">(</span>triggerContext<span class="token punctuation">)</span><span class="token punctuation">;</span> 						<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 			<span class="token punctuation">}</span> 		<span class="token punctuation">}</span> 	<span class="token punctuation">}</span> <span class="token punctuation">}</span>  </code></pre> <h2> <a id="3_67" rel="nofollow"></a>3、静态添加定时任务</h2> <p><strong>需求：定时执行某个方法，定时时间写死</strong><br /> 在方法上面加</p> <pre><code class="prism language-java">	<span class="token annotation punctuation">@Scheduled</span><span class="token punctuation">(</span>cron <span class="token operator">=</span> <span class="token string">"0 0/30 * * * ? "</span><span class="token punctuation">)</span> 	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">checkRsa</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"每三十分钟执行一次"</span><span class="token punctuation">)</span> 	<span class="token punctuation">}</span> </code></pre> <h2> <a id="4cron_76" rel="nofollow"></a>4、cron表达式在线生成</h2> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://cron.qqe2.com/"  rel="nofollow">cron表达式在线生成</a></p> <h2> <a id="5cron_78" rel="nofollow"></a>5、如果不用cron表达式，可以直接使用毫秒</h2> <pre><code class="prism language-bash">    //initialDelay：当任务启动后多久开始执行此方法，fixedDelay：执行频率为多少     @Scheduled<span class="token punctuation">(</span>initialDelay <span class="token operator">=</span> <span class="token number">1000</span>,fixedDelay <span class="token operator">=</span> <span class="token number">1000</span>*10<span class="token punctuation">)</span>     public static void <span class="token function-name function">checkRsa</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span> 	System.out.println<span class="token punctuation">(</span><span class="token string">"每十秒钟执行一次"</span><span class="token punctuation">)</span> 	<span class="token punctuation">}</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-86049.htm">经典数据结构解决迷宫问题（Python实现）</a></p>
+                                        <p>下一个：<a href="/news/article-86753.htm">Linux nfs 网络文件系统 配置过程</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-77642.htm" title="十大动物疫苗公司有哪些名字和地址（动物疫苗品牌）">十大动物疫苗公司有哪些名字和地址（动物疫苗品牌）</a></li>
+                        <li class="py-2"><a href="/news/article-86049.htm" title="经典数据结构解决迷宫问题（Python实现）">经典数据结构解决迷宫问题（Python实现）</a></li>
+                        <li class="py-2"><a href="/news/article-70276.htm" title="Swagger在SpringBoot中的的一些详细配置">Swagger在SpringBoot中的的一些详细配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-free-high-speed-nodes.htm" title="「3月14日」最高速度21.6M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「3月14日」最高速度21.6M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-74927.htm" title="动物园兽医师的职责是什么（动物园兽医岗位职责）">动物园兽医师的职责是什么（动物园兽医岗位职责）</a></li>
+                        <li class="py-2"><a href="/news/article-76290.htm" title="uniapp自定义弹窗组件">uniapp自定义弹窗组件</a></li>
+                        <li class="py-2"><a href="/news/article-83188.htm" title="成都领养宠物的地方有哪些（成都哪里可以领养宠物）">成都领养宠物的地方有哪些（成都哪里可以领养宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-78322.htm" title="美联众合动物医院总部在哪 美联众合动物医院总院在哪">美联众合动物医院总部在哪 美联众合动物医院总院在哪</a></li>
+                        <li class="py-2"><a href="/news/article-72919.htm" title="免费领养宠物的app下载安卓（免费领养宠物的应用）">免费领养宠物的app下载安卓（免费领养宠物的应用）</a></li>
+                        <li class="py-2"><a href="/news/article-76291.htm" title="宠物领养要花钱吗知乎（宠物领养要花钱吗知乎）">宠物领养要花钱吗知乎（宠物领养要花钱吗知乎）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
