@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clash-verge-node.github.io/news/article-99334.htm" />
+    <meta charset="utf-8">
+    <title>SpringBoot中处理的转发与重定向</title>
+        <meta name="description" content="转发：一次请求，服务器内部调用另外的组件处理，request和response可以共用，有限制性，只能转发到本应用中的某些资源，页面或者controller请求 课可以访问WEB-INF目录下面的页面" />
+        <link rel="icon" href="/assets/website/img/clash_verge_node/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Clash Verge Node免费机场节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clash-verge-node.github.io/news/article-99334.htm" />
+    <meta property="og:site_name" content="Clash Verge Node免费机场节点分享官网" />
+    <meta property="og:title" content="SpringBoot中处理的转发与重定向" />
+    <meta property="og:image" content="https://clash-verge-node.github.io/uploads/20240912-1/a6dc23907fdea1db7bafc484e6241b64.webp" />
+        <meta property="og:release_date" content="2025-04-19T08:57:46" />
+    <meta property="og:updated_time" content="2025-04-19T08:57:46" />
+        <meta property="og:description" content="转发：一次请求，服务器内部调用另外的组件处理，request和response可以共用，有限制性，只能转发到本应用中的某些资源，页面或者controller请求 课可以访问WEB-INF目录下面的页面" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SpringBoot中处理的转发与重定向">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
+    <!-- Pe-7 icon -->
+    <link href="/assets/website/css/clash_verge_node/pe-icon-7.css" rel="stylesheet" type="text/css">
+    <!--Slider-->
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/clash_verge_node/owl.theme.default.min.css">
+    <!-- css -->
+    <link href="/assets/website/css/clash_verge_node/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/css/clash_verge_node/style.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1V24PEL91J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1V24PEL91J');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <!--Navbar Start-->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark align-items-center">
+        <div class="container">
+                        <a class="logo mr-3" href="/">
+                <span>Clash Verge Node</span>
+            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="" data-feather="menu"></i></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav navbar-center" id="mySidenav">
+                                        <li class="nav-item"><a href="/" class="nav-link">首页</a></li>
+                                        <li class="nav-item"><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                        <li class="nav-item"><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                        <li class="nav-item"><a href="/client.htm" class="nav-link">客户端</a></li>
+                                        <li class="nav-item"><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Hero Start -->
+    <section class="hero-1-bg bg-light" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png);padding: 0;" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-1-title font-weight-normal text-dark mb-4">SpringBoot中处理的转发与重定向</h1>
+                    <p class="text-muted mb-4 pb-3">
+                        <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-10">
+                    <div class="mt-lg-0"><img src="/assets/website/img/clash_verge_node/hero-img.png" alt="" class="img-fluid d-block mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero End -->
+    <!-- Features Start -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>转发：一次请求，服务器内部调用另外的组件处理，request和response可以共用，有限制性，只能转发到本应用中的某些资源，页面或者controller请求</p> <p>课可以访问WEB-INF目录下面的页面</p> <p>重定向：两次请求，地址会改变，request和response不能共用，不能直接访问WEB-INF下面的资源，</p> <p>根据所要跳转的资源，可以分为跳转到页面或者跳转到其他controller</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="277" src="http://img.555519.xyz/uploads/20221201/7031083fc032fddb6b8de0c8a3c22da1.jpg"></p> <h3 id="-modelandview-">一、返回ModelAndView时的请求转发</h3> <p>当controller中的方法返回ModelAndView的时候，默认是使用的转发。当然，我们也可以显式的指出要使用转发，此时，需在 setViewName()指定的视图前添加forward:，此时springmvc.xml文件中配置的视图解析器将会失效，即需要在setViewName中写上jsp相对于项目根的路径。</p> <p>1：转发到页面</p> <pre class="has"><code class="language-java">/**  * 转发返回ModelAndView对象  * @return  * @throws Exception  */ @RequestMapping("/forwardMAV.do") public ModelAndView forwardMAV()throws Exception{      ModelAndView mv = new ModelAndView();     mv.addObject("type", "转发返回ModelAndView");     //默认情况下使用转发     //mv.setViewName("/result");      //手动显式指定使用转发，此时springmvc.xml配置文件中的视图解析器将会失效     mv.setViewName("forward:/jsp/result.jsp");     return mv; }</code></pre> <p>需要在webapp目录下添加jsp/result.jsp文件：</p> <p>2：转发到controller</p> <p><strong>使用转发跳转到其他controller中</strong></p> <pre class="has"><code class="language-java">@RequestMapping("/forwardMAV.do") public ModelAndView forwardMAV()throws Exception{      ModelAndView mv = new ModelAndView();      //手动显式指定使用转发，此时springmvc.xml配置文件中的视图解析器将会失效     mv.setViewName("forward:other.do");     return mv; }</code></pre> <p>创建OtherController：</p> <pre class="has"><code class="language-java">/**  * 被跳转的controller  */ @Controller public class OtherController {      /**      * 被跳转的controller返回result.jsp      * @return      * @throws Exception      */     @RequestMapping("/other.do")     public ModelAndView other()throws Exception{          ModelAndView mv = new ModelAndView();         mv.addObject("type", "被跳转的controller");          mv.setViewName("result");         return mv;     } }</code></pre> <p>二、返回ModelAndView时的重定向：发送的get请求，参数在url后面</p> <p>如果要实现重定向，则需在setViewName()指定的视图前添加redirect:，此时springmvc.xml文件中配置的视图解析器将会失效，即需要在setViewName中写上jsp相对于项目根的路径。重定向的方式在request域中的数据会失效，此时可以通过ModelAndView来传递数据，但是只能传递基本数据类型和String类型，因为spring mvc会将传递的数据以请求参数的方式放到url的后面，此时任何数据类型都会被转换为普通的字符串。另外，我们在jsp中取值的时候需要使用 EL 表达式中的请求参数param读取。</p> <p>除此之外，你还可以将数据放到HttpSession域中，这里就不演示了。</p> <p>1.重定向到页面</p> <pre class="has"><code class="language-java">/**  * 重定向返回ModelAndView对象  * @return  * @throws Exception  */ @RequestMapping("/redirectMAV.do") public ModelAndView redirectMAV(School school,String name)throws Exception{      ModelAndView mv = new ModelAndView();      //在重定向中可以使用ModelAndView传递数据，但是只能传递基本数据类型和String类型     mv.addObject("school",school);     mv.addObject("name", name);      //使用重定向，此时springmvc.xml配置文件中的视图解析器将会失效     mv.setViewName("redirect:/jsp/result.jsp");     return mv;</code></pre> <p>result.jsp</p> <pre class="has"><code class="language-html">&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt; &lt;html&gt; &lt;head&gt;     &lt;title&gt;Title&lt;/title&gt; &lt;/head&gt; &lt;body&gt;  ${school.schoolName}&lt;br&gt; ${param.school.address}&lt;br&gt; ${param.name} &lt;/body&gt; &lt;/html&gt;</code></pre> <p>2，重定向到controller<br /> 在重定向到其他controller中的方法的时候，只要保证两者的参数名一致即可实现数据的传递。</p> <pre class="has"><code class="language-java">@RequestMapping("/redirectMAV.do") public ModelAndView redirectMAV(School school,String name)throws Exception{      ModelAndView mv = new ModelAndView();      mv.addObject("name", name);     mv.addObject("schoolName", school.getSchoolName());     mv.addObject("address", school.getAddress());      System.out.println(school.getAddress());     //使用重定向，此时springmvc.xml配置文件中的视图解析器将会失效     mv.setViewName("redirect:other.do");     return mv; }</code></pre> <pre class="has"><code class="language-java">RequestMapping("/other.do") public ModelAndView other(String name, School school)throws Exception{      ModelAndView mv = new ModelAndView();      //单个接收     mv.addObject("name", name);      //通过javabean对象接收     mv.addObject("school", school);      System.out.println(school.getAddress());     mv.setViewName("result");      return mv; }</code></pre> <h3 id="-string-">返回String类型的转发</h3> <p>这个整体上跟之前ModelAndView差不多，只不过在controller中的方法参数会被自动的放到request域中。</p> <pre class="has"><code class="language-java">@RequestMapping("/forwardStr.do") public String forwardStr(School school)throws Exception{      //默认会使用转发     //return "result";     //显式的使用转发     return "forward:/jsp/result.jsp"; }</code></pre> <p>result.jsp中直接通过request域获取数据，以下两种方式均可。</p> <p>${requestScope.school.schoolName}</p> <p>${school.schoolName}</p> <h3>返回String类型的重定向</h3> <p>这里要想传递数据的话，需要使用之前介绍过的Model实现，这里的数据同样会放在url中，所以只能传递基本数据类型和String类型。</p> <pre class="has"><code class="language-java">@RequestMapping("/redirectStr.do") public String redirectStr(School school, Model model)throws Exception{      //这里的数据同样会放在url中，所以只能传递基本数据类型和String类型     model.addAttribute("schoolName", school.getSchoolName());     model.addAttribute("address", school.getAddress());      return "redirect:/jsp/result.jsp"; }</code></pre> <p>result.jsp中需要通过param来获取数据：</p> <p>${param.schoolName}</p> <p>${param.address}</p> <p>这里转发和重定向跟之前返回ModelAndView的时候一样，所以就不演示了。</p> <h3 id="-void-">返回void的重定向和转发</h3> <p>当方法没有返回值即返回void的时候，重定向和转发操作都是使用的servlet的api，就是：<br /> 转发：</p> <pre class="has"><code class="language-java">request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);</code></pre> <p>重定向：</p> <pre class="has"><code class="language-java">response.sendRedirect(request.getContextPath()+"/jsp/result.jsp");</code></pre> <p>***************************************</p> <p>@RequestMapping(value="/aa",method=RequestMethod.GET)</p> <p>public ModelAndView aaa (HttpServletRequest request) {<!-- --></p> <p>String user&nbsp; =&nbsp; request.getParameter("username");</p> <p>ModelAndView&nbsp; mv = new&nbsp;ModelAndView ("xyxyh/declaration/delcleView");</p> <p>mv.addObject("pas","bb"):</p> <p>return mv</p> <p>}</p> <pre><code class="language-java">@RequestMapping(value="/aa",method=RequestMethod.GET)  public ModelAndView aaa (HttpServletRequest request,ModelMap model) {  String user&nbsp; =&nbsp; request.getParameter("username");  ModelAndView&nbsp; mv = new&nbsp;ModelAndView ("xyxyh/declaration/delcleView");  mv.addObject("pas","bb"):  model.addAttribute("typeFlag","aaaaa"); return mv  }</code></pre> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-98546.htm">动物打疫苗去哪里打针（动物打疫苗去哪里打针好）</a></p>
+                                        <p>下一个：<a href="/news/article-99336.htm">动物医院名字关键字大全最新图片（动物医院名字关键字大全最新图片高清）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-82467.htm" title="el-cascader得到数据和数据回显——基于中国省市区地址三级联动">el-cascader得到数据和数据回显——基于中国省市区地址三级联动</a></li>
+                        <li class="py-2"><a href="/news/article-79687.htm" title="想念动物医院电话（动物医院大众点评）">想念动物医院电话（动物医院大众点评）</a></li>
+                        <li class="py-2"><a href="/news/article-68988.htm" title="流浪宠物领养网站大全下载（流浪动物领养网站）">流浪宠物领养网站大全下载（流浪动物领养网站）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-free-node-subscribe-links.htm" title="「3月23日」最高速度20.2M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「3月23日」最高速度20.2M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-clash-verge-rev-windows.htm" title="「3月15日」最高速度21.1M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「3月15日」最高速度21.1M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-91425.htm" title="宠物店用品批发市场（宠物用品批发店怎么样）">宠物店用品批发市场（宠物用品批发店怎么样）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-18-free-subscribe-node.htm" title="「4月18日」最高速度22.4M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「4月18日」最高速度22.4M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-latest-clash-verge-rev-node.htm" title="「3月13日」最高速度22.6M/S，2025年Clash Verge Node每天更新免费节点订阅链接">「3月13日」最高速度22.6M/S，2025年Clash Verge Node每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-94926.htm" title="宠物店盈利范围（宠物店利润和成本分析）">宠物店盈利范围（宠物店利润和成本分析）</a></li>
+                        <li class="py-2"><a href="/news/article-68359.htm" title="附近免费领养小猫的地方 附近免费领养小猫的地方在哪里">附近免费领养小猫的地方 附近免费领养小猫的地方在哪里</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">64</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features End -->
+        <!-- Footer Start -->
+    <section class="footer" style="background-image: url(/assets/website/img/clash_verge_node/hero-1-bg-img.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-center">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="text-white-50 f-15 mb-0">
+                            <a href="/">Clash Verge Node免费机场节点分享官网</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer End -->
+    <!-- javascript -->
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/bootstrap.bundle.min.js"></script>
+    <script src="/assets/website/js/frontend/clash_verge_node/jquery.easing.min.js"></script>
+    <!-- feather icons -->
+    <script src="/assets/website/js/frontend/clash_verge_node/feather-icons.js"></script>
+    <!-- carousel -->
+    <script src="/assets/website/js/frontend/clash_verge_node/owl.carousel.min.js"></script>
+    <!-- Main Js -->
+    <script src="/assets/website/js/frontend/clash_verge_node/app.js"></script>
+
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
