@@ -1,4 +1,4 @@
-# 「10月15日」最高速度18.9M/S，2025年Clash Verge Node每天更新免费节点订阅链接  更新时间 2025-10-15 09:40:15
+# 「10月21日」最高速度22.7M/S，2025年Clash Verge Node每天更新免费节点订阅链接  更新时间 2025-10-21 03:39:22
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://clash-verge-node.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://clash-verge-node.github.io/uploads/2025/10/0-20251015.yaml
-- https://clash-verge-node.github.io/uploads/2025/10/1-20251015.yaml
-- https://clash-verge-node.github.io/uploads/2025/10/2-20251015.yaml
-- https://clash-verge-node.github.io/uploads/2025/10/3-20251015.yaml
-- https://clash-verge-node.github.io/uploads/2025/10/4-20251015.yaml
+- https://clash-verge-node.github.io/uploads/2025/10/0-20251021.yaml
+- https://clash-verge-node.github.io/uploads/2025/10/1-20251021.yaml
+- https://clash-verge-node.github.io/uploads/2025/10/2-20251021.yaml
+- https://clash-verge-node.github.io/uploads/2025/10/3-20251021.yaml
+- https://clash-verge-node.github.io/uploads/2025/10/4-20251021.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://clash-verge-node.github.io/uploads/2025/10/0-20251015.txt
-- https://clash-verge-node.github.io/uploads/2025/10/1-20251015.txt
-- https://clash-verge-node.github.io/uploads/2025/10/2-20251015.txt
-- https://clash-verge-node.github.io/uploads/2025/10/3-20251015.txt
-- https://clash-verge-node.github.io/uploads/2025/10/4-20251015.txt
+- https://clash-verge-node.github.io/uploads/2025/10/0-20251021.txt
+- https://clash-verge-node.github.io/uploads/2025/10/1-20251021.txt
+- https://clash-verge-node.github.io/uploads/2025/10/2-20251021.txt
+- https://clash-verge-node.github.io/uploads/2025/10/3-20251021.txt
+- https://clash-verge-node.github.io/uploads/2025/10/4-20251021.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://clash-verge-node.github.io/uploads/2025/10/20251015.json
+- https://clash-verge-node.github.io/uploads/2025/10/20251021.json
 
 ## 更多Clash节点订阅 ：
 
